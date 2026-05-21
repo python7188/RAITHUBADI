@@ -3,5 +3,8 @@ uvicorn
 twilio
 google-genai
 requests
+httpx
 Pillow
 python-multipart
+pydantic
+apscheduler
