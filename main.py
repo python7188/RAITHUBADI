@@ -7,8 +7,9 @@ import os
 
 app = FastAPI()
 
+import google.generativeai as genai
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.0-flash-exp")
 
 PROMPT = """మీరు రైతుబాడి AI — భారతీయ రైతులకు సహాయం చేసే నిపుణుడు.
 You are Raithubadi AI, a crop disease expert for Indian farmers.
