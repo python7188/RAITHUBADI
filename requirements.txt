@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 twilio
-anthropic
+google-generativeai
 requests
+Pillow
 python-multipart

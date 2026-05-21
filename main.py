@@ -1,33 +1,60 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
 from twilio.twiml.messaging_response import MessagingResponse
-import anthropic
+import google.generativeai as genai
 import requests
-import base64
 import os
 
 app = FastAPI()
 
-SYSTEM_PROMPT = """You are Raithubadi AI — a crop disease expert for Indian farmers.
-Always reply in Telugu first, then English below.
-Be warm, respectful. Speak like a knowledgeable village elder.
-Never use technical jargon. Always mention cost saved vs blanket spraying.
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-1.5-flash")
+
+PROMPT = """మీరు రైతుబాడి AI — భారతీయ రైతులకు సహాయం చేసే నిపుణుడు.
+You are Raithubadi AI, a crop disease expert for Indian farmers.
+
+Rules:
+- Always reply in Telugu first, then English
+- Speak like a warm, knowledgeable village elder
+- Never use technical jargon
+- Always mention exact dose per acre
+- Always mention money saved vs blanket spraying
+- Organic treatment first, chemical only if necessary
 
 Format every reply exactly like this:
+
 🌾 వ్యాధి: [disease name in Telugu]
-⚠️ తీవ్రత: [తక్కువ/మధ్యమ/అధికం]
-💊 చికిత్స: [treatment in Telugu]
-💰 మోతాదు: [exact dose per acre]
+⚠️ తీవ్రత: [తక్కువ / మధ్యమ / అధికం]
+💊 చికిత్స: [treatment in Telugu — organic first]
+💰 మోతాదు: [exact dose per acre in Telugu]
 💵 ఖర్చు ఆదా: ₹[amount saved vs blanket spray]
-📅 తిరిగి చూడండి: [days to recheck]
+📅 తిరిగి చూడండి: [days]
 
 ---
-🌾 Disease: [English name]
+🌾 Disease: [English]
 ⚠️ Severity: [Low/Medium/High]
-💊 Treatment: [English treatment]
-💰 Dose: [dose per acre]
+💊 Treatment: [English]
+💰 Dose: [per acre]
 💵 Cost saved: ₹[amount]
 📅 Recheck in: [days]"""
+
+def analyze_image(image_url):
+    account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+    auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
+    
+    img = requests.get(image_url, auth=(account_sid, auth_token))
+    
+    import PIL.Image
+    import io
+    image = PIL.Image.open(io.BytesIO(img.content))
+    
+    response = model.generate_content([PROMPT, image])
+    return response.text
+
+def analyze_text(message):
+    full_prompt = f"{PROMPT}\n\nరైతు చెప్పింది: {message}"
+    response = model.generate_content(full_prompt)
+    return response.text
 
 @app.post("/whatsapp")
 async def whatsapp_webhook(request: Request):
@@ -37,62 +64,11 @@ async def whatsapp_webhook(request: Request):
     num_media = form_data.get("NumMedia", "0")
     media_url = form_data.get("MediaUrl0", "")
 
-    client = anthropic.Anthropic(
-        api_key=os.environ.get("ANTHROPIC_API_KEY")
-    )
-
     try:
         if int(num_media) > 0 and media_url:
-            account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
-            auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
-            
-            img_response = requests.get(
-                media_url, 
-                auth=(account_sid, auth_token)
-            )
-            image_data = base64.b64encode(
-                img_response.content
-            ).decode("utf-8")
-            content_type = img_response.headers.get(
-                "Content-Type", "image/jpeg"
-            )
-
-            result = client.messages.create(
-                model="claude-opus-4-5",
-                max_tokens=1000,
-                system=SYSTEM_PROMPT,
-                messages=[{
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "image",
-                            "source": {
-                                "type": "base64",
-                                "media_type": content_type,
-                                "data": image_data
-                            }
-                        },
-                        {
-                            "type": "text",
-                            "text": "ఈ పంట ఫోటో చూసి వ్యాధిని గుర్తించండి."
-                        }
-                    ]
-                }]
-            )
-            reply = result.content[0].text
-
+            reply = analyze_image(media_url)
         elif body.strip():
-            result = client.messages.create(
-                model="claude-opus-4-5",
-                max_tokens=1000,
-                system=SYSTEM_PROMPT,
-                messages=[{
-                    "role": "user",
-                    "content": f"రైతు చెప్పింది: {body}"
-                }]
-            )
-            reply = result.content[0].text
-
+            reply = analyze_text(body.strip())
         else:
             reply = (
                 "నమస్కారం! 🌾 రైతుబాడికి స్వాగతం.\n"
@@ -107,14 +83,11 @@ async def whatsapp_webhook(request: Request):
     twiml = MessagingResponse()
     twiml.message(reply)
     
-    return PlainTextResponse(
-        str(twiml), 
-        media_type="application/xml"
-    )
+    return PlainTextResponse(str(twiml), media_type="application/xml")
 
 @app.get("/")
 def root():
     return {
-        "status": "రైతుబాడి నడుస్తోంది", 
+        "status": "రైతుబాడి నడుస్తోంది",
         "message": "Raithubadi is running 🌾"
     }
