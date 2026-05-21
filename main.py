@@ -89,7 +89,7 @@ async def whatsapp_webhook(request: Request):
     twiml = MessagingResponse()
     twiml.message(reply)
 
-    return PlainTextResponse(str(twiml), media_type="application/xml")
+    return PlainTextResponse(str(twiml), media_type="text/xml")
 
 @app.get("/")
 def root():
