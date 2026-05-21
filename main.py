@@ -1,21 +1,20 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
 from twilio.twiml.messaging_response import MessagingResponse
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import requests
 import os
 
 app = FastAPI()
 
-import google.generativeai as genai
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.0-flash-exp")
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 PROMPT = """మీరు రైతుబాడి AI — భారతీయ రైతులకు సహాయం చేసే నిపుణుడు.
 You are Raithubadi AI, a crop disease expert for Indian farmers.
 
 Rules:
-- Always reply in Telugu first, then English
+- Always reply in Telugu first, then English below
 - Speak like a warm, knowledgeable village elder
 - Never use technical jargon
 - Always mention exact dose per acre
@@ -29,10 +28,10 @@ Format every reply exactly like this:
 💊 చికిత్స: [treatment in Telugu — organic first]
 💰 మోతాదు: [exact dose per acre in Telugu]
 💵 ఖర్చు ఆదా: ₹[amount saved vs blanket spray]
-📅 తిరిగి చూడండి: [days]
+📅 తిరిగి చూడండి: [days to recheck]
 
 ---
-🌾 Disease: [English]
+🌾 Disease: [English name]
 ⚠️ Severity: [Low/Medium/High]
 💊 Treatment: [English]
 💰 Dose: [per acre]
@@ -42,25 +41,31 @@ Format every reply exactly like this:
 def analyze_image(image_url):
     account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
     auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
-    
+
     img = requests.get(image_url, auth=(account_sid, auth_token))
-    
-    import PIL.Image
-    import io
-    image = PIL.Image.open(io.BytesIO(img.content))
-    
-    response = model.generate_content([PROMPT, image])
+    image_bytes = img.content
+    content_type = img.headers.get("Content-Type", "image/jpeg")
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=[
+            types.Part.from_bytes(data=image_bytes, mime_type=content_type),
+            types.Part.from_text(text=PROMPT)
+        ]
+    )
     return response.text
 
 def analyze_text(message):
-    full_prompt = f"{PROMPT}\n\nరైతు చెప్పింది: {message}"
-    response = model.generate_content(full_prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=f"{PROMPT}\n\nరైతు చెప్పింది: {message}"
+    )
     return response.text
 
 @app.post("/whatsapp")
 async def whatsapp_webhook(request: Request):
     form_data = await request.form()
-    
+
     body = form_data.get("Body", "")
     num_media = form_data.get("NumMedia", "0")
     media_url = form_data.get("MediaUrl0", "")
@@ -83,7 +88,7 @@ async def whatsapp_webhook(request: Request):
 
     twiml = MessagingResponse()
     twiml.message(reply)
-    
+
     return PlainTextResponse(str(twiml), media_type="application/xml")
 
 @app.get("/")
