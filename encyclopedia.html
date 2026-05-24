@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>రైతుబాడి - పంట సంరక్షణ విజ్ఞానకోశం | Crop Care Encyclopedia</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ── BASE & VARIABLES ── */
+    :root {
+      /* Backgrounds - Organic & Heart-warming Palette */
+      --bg-base: #0C130A; /* Deep crop forest green */
+      --bg-card: rgba(20, 30, 16, 0.75); /* Warm translucent olive forest green */
+      --bg-overlay: rgba(12, 19, 10, 0.88);
+      --bg-surface: rgba(15, 25, 12, 0.72);
+
+      /* Accent Borders */
+      --border-gold: rgba(228, 168, 52, 0.28); /* Gold wheat outlines */
+      --border-green: rgba(62, 190, 103, 0.25); /* Crop leaf green outlines */
+      --border-glass: rgba(255, 255, 255, 0.08);
+
+      /* Highlight Colors & Accents */
+      --gold: #E4A834; /* Wheat gold accent */
+      --green: #3EBE67; /* Lush green */
+      --green-light: #4ADE80; /* Bright growth green */
+      
+      /* Typography */
+      --text-main: #F3F4F6;
+      --text-muted: #A0ABA5; /* Warm translucent crop green/gray */
+      --text-dark: #0C130A;
+      
+      --nav-height: 72px;
+      --container-width: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.lang-te {
+      font-family: 'Noto Sans Telugu', 'Inter', sans-serif;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .display { font-family: 'Outfit', 'Noto Sans Telugu', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+    .ui { font-family: 'Inter', sans-serif; }
+    .telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+    .mono { font-family: 'Fira Code', monospace; }
+    
+    h1, h2, h3, h4 { color: white; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── MULTILINGUAL LOGIC ── */
+    [lang="en"], [lang="hi"] { display: none; }
+    body.lang-en [lang="en"] { display: inline-block; }
+    body.lang-en [lang="te"], body.lang-en [lang="hi"] { display: none; }
+    body.lang-hi [lang="hi"] { display: inline-block; }
+    body.lang-hi [lang="te"], body.lang-hi [lang="en"] { display: none; }
+    body.lang-te [lang="te"] { display: inline-block; }
+    
+    /* Force block display for certain elements */
+    body.lang-en p[lang="en"], body.lang-en h1[lang="en"], body.lang-en h2[lang="en"], body.lang-en h3[lang="en"], body.lang-en div[lang="en"] { display: block; }
+    body.lang-hi p[lang="hi"], body.lang-hi h1[lang="hi"], body.lang-hi h2[lang="hi"], body.lang-hi h3[lang="hi"], body.lang-hi div[lang="hi"] { display: block; }
+    body.lang-te p[lang="te"], body.lang-te h1[lang="te"], body.lang-te h2[lang="te"], body.lang-te h3[lang="te"], body.lang-te div[lang="te"] { display: block; }
+
+    /* ── BACKGROUNDS ── */
+    .hero-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=1920&q=90&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(12, 19, 10, 0.94) 0%, rgba(12, 19, 10, 0.88) 50%, #0C130A 100%);
+      z-index: -1;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* ── UTILITIES ── */
+    .glass-panel {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green-light);
+      box-shadow: 0 10px 25px rgba(62, 190, 103, 0.15);
+    }
+    
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .text-gold { color: var(--gold); }
+    .text-green { color: var(--green-light); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--text-dark);
+      box-shadow: 0 4px 14px rgba(228, 168, 52, 0.25);
+    }
+    .btn-primary:hover {
+      background: #f1b94e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(228, 168, 52, 0.4);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-gold);
+    }
+    .btn-ghost:hover {
+      background: rgba(228, 168, 52, 0.08);
+      border-color: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── NAVIGATION ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(12, 19, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .logo {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--gold);
+      border-radius: 2px;
+    }
+    
+    .lang-switcher {
+      display: flex;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border-glass);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--border-glass);
+      color: var(--text-main);
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ── ENCYCLOPEDIA SPECIFIC STYLES ── */
+    .encyclopedia-section {
+      padding-top: calc(var(--nav-height) + 48px);
+      padding-bottom: 120px;
+    }
+
+    .page-title-area {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .page-title-area h1 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    
+    .page-title-area p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── SEARCH & FILTER BAR ── */
+    .search-filter-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      fill: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(12, 19, 10, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      padding: 14px 16px 14px 48px;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(228, 168, 52, 0.2);
+    }
+
+    .select-dropdown {
+      width: 100%;
+      background: rgba(12, 19, 10, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--text-main);
+      font-size: 16px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23A0ABA5' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .select-dropdown:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+    }
+
+    /* ── TAB SYSTEM ── */
+    .tabs-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .tabs-container {
+      display: inline-flex;
+      background: rgba(0,0,0,0.4);
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 28px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--text-dark);
+      box-shadow: 0 4px 12px rgba(228, 168, 52, 0.25);
+    }
+
+    /* ── CROPS GRID ── */
+    .crops-container {
+      display: block;
+    }
+
+    .crops-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .crop-card {
+      position: relative;
+      height: 360px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border-gold);
+      transition: all 0.3s ease;
+    }
+
+    .crop-card:hover {
+      border-color: var(--green-light);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(62, 190, 103, 0.25);
+    }
+
+    .crop-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .crop-card:hover .crop-card-img {
+      transform: scale(1.06);
+    }
+
+    .crop-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(12, 19, 10, 0.98) 0%, rgba(12, 19, 10, 0.7) 50%, transparent 100%);
+    }
+
+    .crop-card-tag {
+      align-self: flex-start;
+      background: rgba(228, 168, 52, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .crop-card-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .crop-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .crop-card-action {
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .crop-card-action svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--green-light);
+      transition: transform 0.2s ease;
+    }
+
+    .crop-card:hover .crop-card-action svg {
+      transform: translateX(4px);
+    }
+
+    /* ── DISEASES ACCORDIONS ── */
+    .diseases-container {
+      display: none;
+    }
+
+    .disease-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .disease-accordion {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .disease-accordion.active {
+      border-color: var(--green-light);
+      box-shadow: 0 10px 25px rgba(62, 190, 103, 0.12);
+    }
+
+    .disease-header {
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .disease-header:hover {
+      background-color: rgba(228, 168, 52, 0.04);
+    }
+
+    .disease-header-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .disease-crop-badge {
+      background: rgba(62, 190, 103, 0.12);
+      border: 1px solid var(--border-green);
+      color: var(--green-light);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .disease-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--text-muted);
+      transition: transform 0.3s ease, fill 0.3s ease;
+    }
+
+    .disease-accordion.active .accordion-icon {
+      transform: rotate(180deg);
+      fill: var(--gold);
+    }
+
+    .disease-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .disease-content-inner {
+      padding: 0 32px 32px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 4px;
+    }
+
+    .disease-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 24px;
+    }
+
+    .detail-card {
+      background: rgba(12, 19, 10, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .detail-card.organic {
+      border-color: rgba(62, 190, 103, 0.2);
+      background: rgba(20, 35, 16, 0.4);
+    }
+
+    .detail-card.chemical {
+      border-color: rgba(228, 168, 52, 0.2);
+      background: rgba(30, 24, 12, 0.4);
+    }
+
+    .detail-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .detail-card.organic .detail-card-title { color: var(--green-light); }
+    .detail-card.chemical .detail-card-title { color: var(--gold); }
+
+    .detail-card-title svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .detail-card.organic .detail-card-title svg { fill: var(--green-light); }
+    .detail-card.chemical .detail-card-title svg { fill: var(--gold); }
+
+    .detail-card-content {
+      font-size: 14.5px;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* ── FEEDBACK & STATS ── */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 64px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+    }
+
+    .no-results svg {
+      width: 48px;
+      height: 48px;
+      fill: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .no-results h3 {
+      font-size: 20px;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .no-results p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060B05;
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-glass);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+    .footer-col h4 {
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ── RESPONSIVE (390px Mobile & Tablet) ── */
+    @media (max-width: 1024px) {
+      .crops-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .controls-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 16px;
+      }
+      .controls-grid > *:first-child {
+        grid-column: span 2;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: var(--bg-surface);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        padding: 24px;
+        border-bottom: 1px solid var(--border-gold);
+        gap: 20px;
+        z-index: 99;
+      }
+      .nav-links.mobile-active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      
+      .crops-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .disease-header {
+        padding: 16px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .disease-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+      }
+      .disease-title {
+        font-size: 17px;
+      }
+      .disease-crop-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+      }
+      .accordion-icon {
+        align-self: flex-end;
+      }
+      .disease-content-inner {
+        padding: 0 20px 24px 20px;
+      }
+      .disease-details-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .controls-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .controls-grid > *:first-child {
+        grid-column: span 1;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .crops-grid {
+        grid-template-columns: 1fr;
+      }
+      .tab-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body class="lang-te">
+
+  <!-- Fixed Backdrop System -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo display">
+        <span class="text-green">🌾</span> 
+        <span lang="te" class="telugu">రైతుబాడి</span>
+        <span lang="en">RaituBadi</span>
+        <span lang="hi">रैतुबाड़ी</span>
+      </a>
+      
+      <div class="nav-links ui">
+        <a href="index.html" class="nav-link">
+          <span lang="te" class="telugu">హోమ్</span>
+          <span lang="en">Home</span>
+          <span lang="hi">होम</span>
+        </a>
+        <a href="analyzer.html" class="nav-link">
+          <span lang="te" class="telugu">పంటల ఎనలైజర్</span>
+          <span lang="en">AI Analyzer</span>
+          <span lang="hi">एआई विश्लेषक</span>
+        </a>
+        <a href="encyclopedia.html" class="nav-link active">
+          <span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span>
+          <span lang="en">Encyclopedia</span>
+          <span lang="hi">फसल ज्ञानकोश</span>
+        </a>
+        <a href="features.html" class="nav-link">
+          <span lang="te" class="telugu">ఫీచర్లు</span>
+          <span lang="en">Features</span>
+          <span lang="hi">सुविधाएं</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span lang="te" class="telugu">రైతుల గుండె చప్పుడు</span>
+          <span lang="en">Our Story</span>
+          <span lang="hi">हमारी कहानी</span>
+        </a>
+      </div>
+
+      <div class="nav-actions" style="display: flex; gap: 16px; align-items: center;">
+        <div class="lang-switcher mono">
+          <button class="lang-btn" data-lang="te">TE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">HI</button>
+        </div>
+        <button class="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="container encyclopedia-section">
+    <div class="page-title-area">
+      <h1 class="display">
+        <span lang="te" class="telugu">పంట సంరక్షణ <span class="text-gold">విజ్ఞానకోశం</span></span>
+        <span lang="en">Crop Care <span class="text-gold">Encyclopedia</span></span>
+        <span lang="hi">फसल संरक्षण <span class="text-gold">ज्ञानकोश</span></span>
+      </h1>
+      <p class="ui">
+        <span lang="te" class="telugu">మట్టి నుండి పుట్టిన సాంకేతికత - మీ పంటలను సంరక్షించే మరియు అధిక దిగుబడిని సాధించేందుకు సేంద్రీయ మరియు రసాయన చికిత్సల సమగ్ర గైడ్.</span>
+        <span lang="en">Technology born from soil - A comprehensive guide of organic and chemical solutions to protect your crops and achieve high yields.</span>
+        <span lang="hi">मिट्टी से जन्मी तकनीक - अपनी फसलों की रक्षा करने और उच्च उपज प्राप्त करने के लिए जैविक और रासायनिक समाधानों की एक व्यापक मार्गदर्शिका।</span>
+      </p>
+    </div>
+
+    <!-- Search & Filter Card -->
+    <div class="search-filter-card">
+      <div class="controls-grid">
+        <div class="input-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input type="text" class="search-input" id="searchBar" placeholder="పంట పేరు లేదా వ్యాధి లక్షణాలను వెతకండి... / Search crops, diseases, symptoms...">
+        </div>
+        
+        <div class="dropdown-wrapper">
+          <select class="select-dropdown" id="cropSelect">
+            <option value="all">
+              TE: అన్ని పంటలు / EN: All Crops / HI: सभी फसलें
+            </option>
+            <option value="cotton">
+              TE: పత్తి / EN: Cotton / HI: कपास
+            </option>
+            <option value="rice">
+              TE: వరి / EN: Rice / HI: धान
+            </option>
+            <option value="chilli">
+              TE: మిరప / EN: Chilli / HI: मिर्च
+            </option>
+            <option value="groundnut">
+              TE: వేరుశెనగ / EN: Groundnut / HI: मूंगफली
+            </option>
+            <option value="maize">
+              TE: మొక్కజొన్న / EN: Maize / HI: मक्का
+            </option>
+            <option value="tobacco">
+              TE: పొగాకు / EN: Tobacco / HI: तंबाकू
+            </option>
+            <option value="tomato">
+              TE: టొమాటో / EN: Tomato / HI: टमाटर
+            </option>
+            <option value="sugarcane">
+              TE: చెరకు / EN: Sugarcane / HI: गन्ना
+            </option>
+          </select>
+        </div>
+
+        <div class="dropdown-wrapper">
+          <select class="select-dropdown" id="typeSelect">
+            <option value="all">
+              TE: అన్నీ చూపించు / EN: Show All / HI: सभी दिखाएं
+            </option>
+            <option value="organic">
+              TE: సేంద్రీయ పరిష్కారాలు / EN: Organic Solutions / HI: जैविक उपचार
+            </option>
+            <option value="chemical">
+              TE: రసాయన పరిష్కారాలు / EN: Chemical Solutions / HI: रासायनिक उपचार
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs Wrapper -->
+    <div class="tabs-wrapper ui">
+      <div class="tabs-container">
+        <button class="tab-btn active" id="tabCrops" onclick="switchTab('crops')">
+          <span lang="te" class="telugu">పంటల విజ్ఞానం</span>
+          <span lang="en">Crops Catalog</span>
+          <span lang="hi">फसलों की सूची</span>
+        </button>
+        <button class="tab-btn" id="tabDiseases" onclick="switchTab('diseases')">
+          <span lang="te" class="telugu">తెగుళ్లు & నివారణలు</span>
+          <span lang="en">Diseases & Solutions</span>
+          <span lang="hi">रोग और समाधान</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- No Results State -->
+    <div class="no-results" id="noResults">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+      </svg>
+      <h3 class="ui">
+        <span lang="te" class="telugu">ఫలితాలు లేవు</span>
+        <span lang="en">No Results Found</span>
+        <span lang="hi">कोई परिणाम नहीं मिला</span>
+      </h3>
+      <p class="ui">
+        <span lang="te" class="telugu">మీరు వెతికిన పదానికి సరిపోయే సమాచారం దొరకలేదు. దయచేసి వేరే పదాన్ని ఉపయోగించండి.</span>
+        <span lang="en">We couldn't find any matches. Please try adjusting your search terms or filters.</span>
+        <span lang="hi">आपके खोज शब्द से मेल खाता हुआ कुछ नहीं मिला। कृपया अपने खोज शब्द या फ़िल्टर बदलें।</span>
+      </p>
+    </div>
+
+    <!-- CROPS CONTAINER -->
+    <div class="crops-container" id="cropsSection">
+      <div class="crops-grid">
+        <!-- Cotton -->
+        <div class="crop-card" data-crop="cotton" onclick="filterByCropCard('cotton')">
+          <img src="https://images.unsplash.com/photo-1601002361661-827fc77ebcde?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Cotton">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Cash Crop</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">పత్తి</span>
+              <span lang="en">Cotton</span>
+              <span lang="hi">कपास</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">నల్ల రేగడి నేలల్లో పండే ప్రధాన వాణిజ్య పంట. ప్రధాన తెగుళ్లు: బ్యాక్టీరియల్ బ్లైట్, కాయ తొలిచే పురుగు.</span>
+              <span lang="en">Major commercial fiber crop grown in black soils. Key diseases: Bacterial Blight, Bollworm.</span>
+              <span lang="hi">काली मिट्टी में उगने वाली प्रमुख व्यावसायिक रेशा फसल। प्रमुख रोग: बैक्टीरियल ब्लाइट, बॉलवॉर्म।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rice -->
+        <div class="crop-card" data-crop="rice" onclick="filterByCropCard('rice')">
+          <img src="https://images.unsplash.com/photo-1586771107445-d3afeb0dece5?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Rice">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Food Crop</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">వరి (ప్యాడీ)</span>
+              <span lang="en">Rice / Paddy</span>
+              <span lang="hi">धान (पaddy)</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">ఆంధ్రప్రదేశ్ లోని నెల్లూరు, గుంటూరు జిల్లాలలో పండించే ఆహార పంట. ప్రధాన తెగుళ్లు: అగ్గి తెగులు, సుడి దోమ.</span>
+              <span lang="en">Staple food crop widely cultivated in Nellore & Guntur. Key diseases: Rice Blast, Brown Plant Hopper.</span>
+              <span lang="hi">नेल्लोर और गुंटूर जिलों में उगाई जाने वाली मुख्य खाद्य फसल। मुख्य रोग: ब्लास्ट, भूरा फुदका।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chilli -->
+        <div class="crop-card" data-crop="chilli" onclick="filterByCropCard('chilli')">
+          <img src="https://images.unsplash.com/photo-1588669527712-4f30504d6e94?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Chilli">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Spice</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">మిరప</span>
+              <span lang="en">Chilli</span>
+              <span lang="hi">मिर्च</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">గుంటూరుకు ప్రత్యేక గుర్తింపు తెచ్చిన పంట. తెగుళ్లు: నల్ల తామర పురుగులు, ఆకు ముడుత తెగులు.</span>
+              <span lang="en">Premium spice crop representing Guntur's pride. Key issues: Black Thrips, Leaf Curl Virus.</span>
+              <span lang="hi">गुंटूर के गौरव का प्रतिनिधित्व करने वाली प्रीमियम मसाला फसल। प्रमुख समस्याएँ: ब्लैक थ्रिप्स, लीफ कर्ल।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Groundnut -->
+        <div class="crop-card" data-crop="groundnut" onclick="filterByCropCard('groundnut')">
+          <img src="https://images.unsplash.com/photo-1503612808064-074e6a0d2f3a?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Groundnut">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Oilseed</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">వేరుశెనగ</span>
+              <span lang="en">Groundnut</span>
+              <span lang="hi">मूंगफली</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">పొడి మరియు ఇసుక నేలల్లో బాగా పండే నూనెగింజల పంట. తెగుళ్లు: టిక్కా ఆకుమచ్చ తెగులు, మొగ్గ కుళ్లు తెగులు.</span>
+              <span lang="en">Major oilseed crop thrive in dry and sandy soils. Key diseases: Tikka Leaf Spot, Bud Necrosis.</span>
+              <span lang="hi">शुष्क और रेतीली मिट्टी में उगने वाली प्रमुख तिलहन फसल। मुख्य रोग: टिक्का लीफ स्पॉट, बड नेक्रोसिस।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maize -->
+        <div class="crop-card" data-crop="maize" onclick="filterByCropCard('maize')">
+          <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Maize">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Cereal</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">మొక్కజొన్న</span>
+              <span lang="en">Maize</span>
+              <span lang="hi">मक्का</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">ఖరీఫ్ మరియు రబీ సీజన్లలో పండించే బహుముఖ తృణధాన్య పంట. తెగుళ్లు: కత్తెర పురుగు, బూజు తెగులు.</span>
+              <span lang="en">Highly versatile cereal crop grown in multiple seasons. Key issues: Fall Armyworm, Downy Mildew.</span>
+              <span lang="hi">खरीफ और रबी में उगाई जाने वाली बहुमुखी अनाज फसल। प्रमुख समस्याएँ: फॉल आर्मीवॉर्म, डाउनी मिल्ड्यू।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tobacco -->
+        <div class="crop-card" data-crop="tobacco" onclick="filterByCropCard('tobacco')">
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Tobacco">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Commercial</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">పొగాకు</span>
+              <span lang="en">Tobacco</span>
+              <span lang="hi">तंबाकू</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">గుంటూరు జిల్లాలో సాగు చేసే ముఖ్యమైన వాణిజ్య పంట. ప్రధాన తెగుళ్లు: మోజాయిక్ వైరస్, ఆకుమచ్చ తెగులు.</span>
+              <span lang="en">Important commercial crop grown in Guntur region. Key issues: Tobacco Mosaic Virus (TMV), Leaf Spot.</span>
+              <span lang="hi">गुंटूर क्षेत्र में उगाई जाने वाली महत्वपूर्ण व्यावसायिक फसल। प्रमुख समस्याएँ: मोज़ेक वायरस, लीफ स्पॉट।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tomato -->
+        <div class="crop-card" data-crop="tomato" onclick="filterByCropCard('tomato')">
+          <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Tomato">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Vegetable</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">టొమాటో</span>
+              <span lang="en">Tomato</span>
+              <span lang="hi">टमाटर</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">నిత్యం వినియోగించే కూరగాయల పంట. ప్రధాన తెగుళ్లు: ఆల్టర్నేరియా ఆకుమచ్చ తెగులు, ఆకు ముడుత వైరస్.</span>
+              <span lang="en">Highly popular vegetable crop. Key diseases: Early Blight, Late Blight, Tomato Leaf Curl Virus.</span>
+              <span lang="hi">अत्यंत लोकप्रिय सब्जी फसल। प्रमुख रोग: अगेती झुलसा, पछेती झुलसा, लीफ कर्ल वायरस।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sugarcane -->
+        <div class="crop-card" data-crop="sugarcane" onclick="filterByCropCard('sugarcane')">
+          <img src="https://images.unsplash.com/photo-1626084834898-d8f95c524021?w=600&q=90&auto=format&fit=crop" class="crop-card-img" alt="Sugarcane">
+          <div class="crop-card-overlay">
+            <span class="crop-card-tag font-mono">Cash Crop</span>
+            <h3 class="crop-card-title display">
+              <span lang="te" class="telugu">చెరకు</span>
+              <span lang="en">Sugarcane</span>
+              <span lang="hi">गन्ना</span>
+            </h3>
+            <p class="crop-card-desc ui">
+              <span lang="te" class="telugu">నీటి వసతి సమృద్ధిగా గల ప్రాంతాలలో పండే వాణిజ్య పంట. ప్రధాన తెగుళ్లు: ఎర్ర కుళ్లు తెగులు, కాటుక తెగులు.</span>
+              <span lang="en">Long-duration commercial cash crop requiring high irrigation. Key diseases: Red Rot, Sugarcane Smut.</span>
+              <span lang="hi">उच्च सिंचाई की आवश्यकता वाली लंबी अवधि की व्यावसायिक नकदी फसल। मुख्य रोग: रेड रॉट, कंडुआ रोग।</span>
+            </p>
+            <div class="crop-card-action ui">
+              <span lang="te" class="telugu">తెగుళ్ల నివారణలు చూడండి</span>
+              <span lang="en">View Diseases & Solutions</span>
+              <span lang="hi">बीमारियों के समाधान देखें</span>
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISEASES ACCORDIONS CONTAINER -->
+    <div class="diseases-container" id="diseasesSection">
+      <div class="disease-list">
+        
+        <!-- 1. Rice Blast -->
+        <div class="disease-accordion" data-crop="rice" data-search="rice blast వరి అగ్గి తెగులు అగ్గి అగ్గితెగులు धान का झोंका रोग झोंका">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">వరి</span>
+                <span lang="en">Rice / Paddy</span>
+                <span lang="hi">धान</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">వరి అగ్గి తెగులు (Rice Blast)</span>
+                <span lang="en">Rice Blast Disease</span>
+                <span lang="hi">धान का झोंका रोग (Rice Blast)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకులపై నూలు కండె ఆకారపు (స్పండిల్) మచ్చలు ఏర్పడతాయి. మచ్చల మధ్య భాగం బూడిద రంగులో మరియు అంచులు ముదురు గోధుమ రంగులో ఉంటాయి. తీవ్రమైనప్పుడు కణుపులు మరియు మెడ విరిగి కుళ్ళిపోతాయి (Neck Blast).</span>
+                    <span lang="en">Spindle-shaped spots on leaves, grey in the center and brown at the margins. It also affects the nodes and neck, causing the panicle to fall over (neck rot/neck blast).</span>
+                    <span lang="hi">पत्तियों पर नाव के आकार के धब्बे बनते हैं, जो केंद्र में धूसर (सलेटी) और किनारों पर भूरे होते हैं। गंभीर मामलों में, गांठ और गर्दन टूटकर सड़ जाती है (Neck blast)।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మాగ్నపోర్తే ఒరైజే (Magnaporthe oryzae) అనే శిలీంధ్రం వల్ల వస్తుంది. పొలంలో నీరు లేకుండా ఆరిపోవడం, వాతావరణంలో తేమ ఎక్కువగా ఉండడం, మరియు నత్రజని (యూరియా) ఎరువులు మోతాదుకు మించి వాడటం వల్ల వ్యాపిస్తుంది.</span>
+                    <span lang="en">Caused by the fungus Magnaporthe oryzae. High nitrogen fertilizer usage, high atmospheric humidity, dry spells, and cool night temperatures accelerate the spread.</span>
+                    <span lang="hi">मैग्नापोर्टे ओराइजी नामक कवक के कारण होता है। खेत का सूखना, उच्च आर्द्रता, और नाइट्रोजन (यूरिया) उर्वरकों के अत्यधिक उपयोग के कारण यह फैलता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పుల్లటి మజ్జిగ ద్రావణం (100 లీటర్ల నీటిలో 6 లీటర్ల మజ్జిగ) పిచికారీ చేయాలి.<br>2. లీటరు నీటికి 10 గ్రాముల సూడోమోనాస్ ఫ్లోరసెన్స్ (Pseudomonas fluorescens) కలిపి ఆకులపై చల్లాలి.<br>3. సమతుల్యంగా వేప పిండి వాడాలి.</span>
+                    <span lang="en">1. Spray sour buttermilk solution (6 liters of well-fermented buttermilk mixed in 100 liters of water per acre).<br>2. Foliar spray of Pseudomonas fluorescens at 10g/L of water.<br>3. Apply neem cake in the soil to improve plant immunity.</span>
+                    <span lang="hi">1. खट्टी छाछ का घोल (100 लीटर पानी में 6 लीटर अच्छी तरह से किण्वित छाछ) मिलाकर छिड़काव करें।<br>2. स्यूडोमोनास फ्लोरेसेंस 10 ग्राम प्रति लीटर पानी में मिलाकर पत्तियों पर छिड़कें।<br>3. नीम की खली का प्रयोग करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. ట్రైసైక్లాజోల్ (Tricyclazole 75% WP) 0.6 గ్రాములు లేదా ఐసోప్రోథియోలేన్ (Isoprothiolane 40% EC) 1.5 మి.లీ. లీటరు నీటికి చొప్పున పిచికారీ చేయాలి.<br>2. తీవ్రత అధికంగా ఉంటే కాసుగామైసిన్ (Kasugamycin 3% SL) 2 మి.లీ. చొప్పున స్ప్రే చేయండి.</span>
+                    <span lang="en">1. Spray Tricyclazole 75% WP at 0.6g/L or Isoprothiolane 40% EC at 1.5ml/L of water.<br>2. If severity is high, spray Kasugamycin 3% SL at 2ml/L of water.</span>
+                    <span lang="hi">1. ट्राइसाइक्लाजोल 75% WP को 0.6 ग्राम या आइसोप्रॉथियोलेन 40% EC को 1.5 मिली प्रति लीटर पानी की दर से स्प्रे करें।<br>2. अधिक प्रकोप होने पर कासुगामाइसिन 3% SL 2 मिली प्रति लीटर का छिड़काव करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Cotton Bacterial Blight -->
+        <div class="disease-accordion" data-crop="cotton" data-search="cotton bacterial blight పత్తి బ్యాక్టీరియల్ బ్లైట్ ఆకుమచ్చ తెగులు బ్లాక్ ఆర్మ్ कपास का बैक्टीरियल ब्लाइट">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">పత్తి</span>
+                <span lang="en">Cotton</span>
+                <span lang="hi">कपास</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">పత్తి బ్యాక్టీరియల్ బ్లైట్ (Bacterial Blight)</span>
+                <span lang="en">Cotton Bacterial Blight / Black Arm</span>
+                <span lang="hi">कपास का बैक्टीरियल ब्लाइट (Black Arm)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకుల అడుగు భాగాన కోణీయ ఆకారంలో నీరు నానిన నల్లటి మచ్చలు ఏర్పడతాయి (Angular Leaf Spot). క్రమేణా ఇవి కొమ్మలకు వ్యాపించి ఎండిపోతాయి, దీనినే 'బ్లాక్ ఆర్మ్' అంటారు. పత్తి కాయలపై కూడా గుండ్రటి నల్లటి మచ్చలు ఏర్పడతాయి.</span>
+                    <span lang="en">Angular, water-soaked spots on leaf undersides which turn brown-black (Angular Leaf Spot). When stems/branches are infected, they turn black and die back (Black Arm). Circular black sunken spots appear on bolls.</span>
+                    <span lang="hi">पत्तियों के निचले हिस्से पर कोणीय आकार के जल-सिक्त धब्बे बन जाते हैं जो बाद में काले हो जाते हैं। तने और शाखाओं में फैलने पर वे काले होकर सूख जाते हैं, जिसे 'ब्लैक आर्म' कहते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">జాంతోమోనాస్ యాక్సనోపోడిస్ పివి మాల్వాసియారమ్ (Xanthomonas axonopodis pv. malvacearum) అనే బ్యాక్టీరియా వల్ల వస్తుంది. అధిక ఉష్ణోగ్రత (30-35°C), తరచూ కురిసే వర్షాలు మరియు అధిక గాలి వేగం ద్వారా వ్యాపిస్తుంది.</span>
+                    <span lang="en">Caused by the bacterium Xanthomonas axonopodis pv. malvacearum. It is favored by warm temperatures (30-35°C), relative humidity above 85%, and high winds during rain.</span>
+                    <span lang="hi">जैंथोमोनस एक्सोनोपोडिस जीवाणु के कारण होता है। उच्च तापमान (30-35 डिग्री सेल्सियस), लगातार बारिश और तेज हवा के कारण संक्रमण तेजी से फैलता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. విత్తనాలను నాటేముందు కిలో విత్తనానికి 10 గ్రాముల సూడోమోనాస్ ఫ్లోరసెన్స్ పొడితో విత్తన శుద్ధి చేయాలి.<br>2. రాగి ఆక్సిక్లోరైడ్ 3 గ్రాములు + వేప నూనె (10,000 PPM) 2 మి.లీ లీటరు నీటికి చొప్పున కలిపి ఆకులపై స్ప్రే చేయండి.</span>
+                    <span lang="en">1. Seed treatment with Pseudomonas fluorescens at 10g/kg of seeds before planting.<br>2. Spray Copper Oxychloride at 3g/L combined with Neem Oil (10,000 PPM) at 2ml/L of water.</span>
+                    <span lang="hi">1. बुवाई से पहले बीजों का स्यूडोमोनास फ्लोरेसेंस (10 ग्राम/किग्रा बीज) से उपचार करें।<br>2. कॉपर ऑक्सीक्लोराइड 3 ग्राम + नीम तेल (10,000 PPM) 2 मिली प्रति लीटर पानी के घोल का छिड़काव करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. స్ట్రెప్టోసైక్లిన్ (Streptocycline) 0.1 గ్రాము మరియు రాగి ఆక్సిక్లోరైడ్ (Copper Oxychloride 50% WP) 3 గ్రాములు లీటరు నీటిలో కలిపి 15 రోజుల వ్యవధిలో రెండు సార్లు పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Spray a combination of Streptocycline at 0.1g and Copper Oxychloride (COC) 50% WP at 3g per liter of water. Repeat after 15 days if symptoms persist.</span>
+                    <span lang="hi">1. स्ट्रेप्टोसाइक्लिन 0.1 ग्राम और कॉपर ऑक्सीक्लोराइड 50% WP 3 ग्राम प्रति लीटर पानी में मिलाकर 15 दिनों के अंतराल पर दो बार छिड़काव करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Chilli Leaf Curl -->
+        <div class="disease-accordion" data-crop="chilli" data-search="chilli leaf curl మిరప ఆకు ముడుత తెగులు బొబ్బ తెగులు జెమిని వైరస్ मिर्च लीफ कर्ल">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">మిరప</span>
+                <span lang="en">Chilli</span>
+                <span lang="hi">मिर्च</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">మిరప ఆకు ముడుత తెగులు (Chilli Leaf Curl)</span>
+                <span lang="en">Chilli Leaf Curl Virus</span>
+                <span lang="hi">मिर्च लीफ कर्ल रोग (Chilli Leaf Curl)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకులు పైకి లేదా కిందికి ముడుచుకుని చిరిగిపోతాయి (బొబ్బ తెగులు). మొక్కల ఎదుగుదల పూర్తిగా నిలిచిపోయి గిడసబారిపోతాయి. ఆకులు మందంగా మరియు పెళుసుగా మారతాయి. పూత రాలిపోవడం వల్ల దిగుబడి విపరీతంగా తగ్గుతుంది.</span>
+                    <span lang="en">Severe upward or downward curling of leaf margins, thick and brittle leaves, reduction in leaf size, and severe stunting of plants. Plants appear bushy and fail to flower/fruit properly.</span>
+                    <span lang="hi">पत्तियां ऊपर या नीचे की ओर मुड़ जाती हैं और छोटी हो जाती हैं। पौधों का विकास पूरी तरह से रुक जाता है और वे झाड़ीदार हो जाते हैं। फूल झड़ने लगते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఇది ఒక జెమిని వైరస్ వల్ల వస్తుంది. దీనిని వ్యాపింపజేయడంలో 'తెల్ల దోమ' (Bemisia tabaci) మరియు 'తామర పురుగులు' (Thrips) వాహకాలుగా (vectors) పనిచేస్తాయి. పొడి వాతావరణం ఈ కీటకాల ఉధృతిని పెంచుతుంది.</span>
+                    <span lang="en">Caused by Chilli Leaf Curl Begomovirus. Transmitted primarily by Whiteflies (Bemisia tabaci) and Thrips. Warm, dry weather conditions encourage high vector populations and rapid viral transmission.</span>
+                    <span lang="hi">यह जेमिनी वायरस के कारण होता है। इसे फैलाने में 'सफेद मक्खी' (Whiteflies) और 'थ्रिप्स' मुख्य वाहक के रूप में कार्य करते हैं। शुष्क मौसम कीटों की आबादी बढ़ाता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పొలం చుట్టూ 2-3 వరుసల జొన్న లేదా మొక్కజొన్నను రక్షక పంటలుగా నాటాలి.<br>2. పసుపు మరియు నీలి జిగురు అట్టలను ఎకరానికి 25 చొప్పున అమర్చాలి.<br>3. 5% వేప గింజల కషాయం (NSKE) లేదా వేప నూనె (10,000 PPM) 2.5 మి.లీ లీటరు నీటికి చొప్పున ఆకుల అడుగుభాగం తడిచేలా పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Grow border crops like sorghum or maize in 2-3 rows around the field.<br>2. Install yellow and blue sticky traps at 25 per acre to trap vectors.<br>3. Spray 5% Neem Seed Kernel Extract (NSKE) or Neem Oil (10,000 PPM) at 2.5ml/L of water.</span>
+                    <span lang="hi">1. खेत के चारों ओर ज्वार या मक्के की 2-3 पंक्तियों में सुरक्षात्मक फसलें लगाएं।<br>2. पीले और नीले चिपचिपे जाल (25 प्रति एकड़) लगाएं।<br>3. नीम के बीज का अर्क (NSKE) 5% या नीम का तेल (10,000 PPM) 2.5 मिली प्रति लीटर पानी में मिलाकर स्प्रे करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">వైరస్ కు నేరుగా మందు లేదు, కేవలం తెల్ల దోమల నివారణ ద్వారా అరికట్టవచ్చు.<br>1. ఫిప్రోనిల్ (Fipronil 80 WG) 0.3 గ్రాములు లేదా ఇమిడాక్లోప్రిడ్ (Imidacloprid 17.8% SL) 0.3 మి.లీ లీటరు నీటికి కలిపి పిచికారీ చేయాలి.<br>2. నల్ల తామర పురుగుల కోసం స్పినెటోరమ్ (Spinetoram 11.7% SC) 0.9 మి.లీ చొప్పున స్ప్రే చేయండి.</span>
+                    <span lang="en">No direct chemical cure for the virus. Control the insect vectors:<br>1. Spray Imidacloprid 17.8% SL at 0.3ml/L or Fipronil 80 WG at 0.3g/L.<br>2. For severe thrips infestation, spray Spinetoram 11.7% SC at 0.9ml/L of water.</span>
+                    <span lang="hi">वायरस का कोई सीधा इलाज नहीं है, इसे केवल वाहकों को नियंत्रित करके रोका जा सकता है।<br>1. इमिडाक्लोप्रिड 17.8% SL 0.3 मिली या फ़िप्रोनिल 80 WG 0.3 ग्राम प्रति लीटर पानी में स्प्रे करें।<br>2. थ्रिप्स के लिए स्पिनेटोरम 11.7% SC 0.9 मिली/लीटर छिड़काव करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Groundnut Tikka Leaf Spot -->
+        <div class="disease-accordion" data-crop="groundnut" data-search="groundnut tikka leaf spot వేరుశెనగ టిక్కా ఆకుమచ్చ తెగులు ఆకుమచ్చ మూंगफली का टिक्का रोग टिक्का">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">వేరుశెనగ</span>
+                <span lang="en">Groundnut</span>
+                <span lang="hi">मूंगफली</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">వేరుశెనగ టిక్కా ఆకుమచ్చ తెగులు (Tikka Leaf Spot)</span>
+                <span lang="en">Groundnut Tikka Leaf Spot</span>
+                <span lang="hi">मूंगफली का टिक्का रोग (Tikka Leaf Spot)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకులపై గుండ్రటి ముదురు గోధుమ లేదా నల్లటి మచ్చలు ఏర్పడతాయి. తెగులు ముదిరిన దశలో మచ్చల చుట్టూ పసుపు రంగు వలయం (halo) స్పష్టంగా కనిపిస్తుంది. ఆకులు పసుపు రంగులోకి మారి అకాలంగా రాలిపోతాయి.</span>
+                    <span lang="en">Circular dark spots appear on both sides of the leaf. In the late stage (Cercospora personata), spots are dark brown to black and lack a distinct yellow halo on the lower surface. Causes premature defoliation.</span>
+                    <span lang="hi">पत्तियों पर छोटे, गोल, गहरे भूरे या काले धब्बे बन जाते हैं। धब्बों के चारों ओर एक पीला घेरा (halo) दिखाई देता है। पत्तियां पीली पड़कर गिर जाती हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">సెర్కోస్పోరా అరాచిడికోలా (Early Spot) మరియు సెర్కోస్పోరిడియం పర్సోనేటం (Late Spot) అనే శిలీంధ్రాల వల్ల వస్తుంది. గాలిలో అధిక తేమ (85% కంటే ఎక్కువ) మరియు రాత్రి పూట చల్లని వాతావరణం అనుకూలం.</span>
+                    <span lang="en">Caused by fungi Cercospora arachidicola (Early leaf spot) and Cercosporidium personatum (Late leaf spot). Encouraged by prolonged wet leaves, high relative humidity, and cool nights.</span>
+                    <span lang="hi">सर्कोस्पोरा एराकिडिकोला (अगेती) और सर्कोस्पोरिडियम पर्सोनेटा (पछेती) कवक के कारण होता है। उच्च सापेक्ष आर्द्रता और ओस इसके मुख्य कारण हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పొగాకు కషాయం లేదా పంచగవ్య 3% ద్రావణాన్ని నాటిన 30 మరియు 45 రోజులలో పిచికారీ చేయాలి.<br>2. ట్రైకోడెర్మా విరిడి (Trichoderma viride) 5 గ్రాములు చొప్పున కిలో విత్తనానికి కలిపి విత్తన శుద్ధి చేయాలి.<br>3. 10% జీవామృతం ద్రావణాన్ని ఆకులపై చల్లాలి.</span>
+                    <span lang="en">1. Spray 3% Panchagavya or sour buttermilk at 30 and 45 days after sowing.<br>2. Seed treatment with Trichoderma viride at 5-10g/kg seed before sowing.<br>3. Foliar spray of 10% Jeevamrutham solution.</span>
+                    <span lang="hi">1. बुवाई के 30 और 45 दिनों बाद 3% पंचगव्य या खट्टी छाछ का छिड़काव करें।<br>2. ट्राइकोडर्मा विरिडी 5-10 ग्राम/किग्रा बीज से बीज शोधन करें।<br>3. 10% जीवामृत घोल का पत्तियों पर छिड़काव करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. కార్బెండజిమ్ (Carbendazim 50% WP) 1 గ్రాము లేదా మాంకోజెబ్ (Mancozeb 75% WP) 2.5 గ్రాములు లీటరు నీటికి చొప్పున కలిపి ఆకులు పూర్తిగా తడిచేలా పిచికారీ చేయాలి.<br>2. కొత్త తరం మందు టెబుకోనజోల్ (Tebuconazole 25.9% EC) 1 మి.లీ లీటరు నీటికి స్ప్రే చేయండి.</span>
+                    <span lang="en">1. Spray Carbendazim 50% WP at 1g/L or Mancozeb 75% WP at 2.5g/L of water at the first appearance of symptoms.<br>2. Spray advanced systemic fungicide Tebuconazole 25.9% EC at 1ml/L of water.</span>
+                    <span lang="hi">1. कार्बेन्डाजिम 50% WP 1 ग्राम या मैंकोजेब 75% WP 2.5 ग्राम प्रति लीटर पानी में मिलाकर छिड़काव करें।<br>2. नई दवा टेबुकोनाज़ोल 25.9% EC 1 मिली/लीटर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Maize Fall Armyworm -->
+        <div class="disease-accordion" data-crop="maize" data-search="maize fall armyworm మొక్కజొన్న కత్తెర పురుగు కత్తెరపురుగు మొవ్వు పురుగు మक्के का फॉल आर्मीवॉर्म फॉल आर्मीवॉर्म">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">మొక్కజొన్న</span>
+                <span lang="en">Maize</span>
+                <span lang="hi">मक्का</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">మొక్కజొన్న కత్తెర పురుగు (Fall Armyworm)</span>
+                <span lang="en">Maize Fall Armyworm Infestation</span>
+                <span lang="hi">मक्के का फॉल आर्मीवॉर्म (Fall Armyworm)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మొక్క మొదట్లోనే ఆకులపై చిన్న చిన్న పిన్ లాంటి రంధ్రాలు పడతాయి. లార్వా పెరిగేకొద్దీ ఆకులను విపరీతంగా తినివేసి పొడవైన నిలువు రంధ్రాలు చేస్తాయి. సుడిలో (whorl) చెక్కపొడి వంటి విసర్జితాలు స్పష్టంగా కనిపిస్తాయి. మొవ్వు చనిపోతుంది (Dead heart).</span>
+                    <span lang="en">Early stages show pin-hole damage on leaves. Older larvae feed voraciously inside the whorl, causing large, ragged elongated holes. Massive accumulation of sawdust-like frass inside the whorl; destruction of growing point.</span>
+                    <span lang="hi">पत्तियों पर छोटे सुई के आकार के छेद बन जाते हैं। जैसे-जैसे लार्वा बढ़ता है, वह पत्तियों को खा जाता है और बड़े छेद कर देता है। भंवर (whorl) में भूसे जैसा मल जमा होता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">స్పోడోప్టెరా ఫ్రూగిపెర్డా (Spodoptera frugiperda) అనే కీటకం యొక్క లార్వా దీనికి కారణం. నిరంతర మొక్కజొన్న సాగు, మోనోకల్చర్ మరియు సరియైన పంట మార్పిడి లేకపోవడం వల్ల ఈ తెగులు ఉధృతి నెల్లూరు, గుంటూరు ప్రాంతాల్లో పెరిగింది.</span>
+                    <span lang="en">Caused by the caterpillar of Spodoptera frugiperda moth. The pest is highly invasive and breeds rapidly under hot, humid environments, especially where maize is continuously grown.</span>
+                    <span lang="hi">स्पोडोप्टेरा फ्रूगीपर्डा कीट के लार्वा के कारण होता है। मक्के की लगातार खेती, मोनोकल्चर और उचित फसल चक्र के अभाव में यह कीट तेजी से बढ़ता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. మొదటి దశలో పొడి ఇసుక లేదా చెక్కబూడిదను మొక్క సుడిలో (whorl) వేయాలి, ఇది లార్వా చర్మంపై గీతలు వేసి చంపుతుంది.<br>2. బవేరియా బాసియానా (Beauveria bassiana) శిలీంధ్ర పొడిని లీటరు నీటికి 5 గ్రాముల చొప్పున కలిపి సాయంత్రం వేళల్లో సుడి తడిచేలా పిచికారీ చేయాలి.<br>3. ఎకరానికి 10 పక్షి స్థావరాలు (Bird perches) ఏర్పాటు చేయాలి.</span>
+                    <span lang="en">1. Pour dry sand or wood ash into the whorls of maize plants to desiccate the larvae.<br>2. Spray entomopathogenic fungus Beauveria bassiana at 5g/L of water directly into the whorl in the late evenings.<br>3. Place bird perches (10 per acre) to encourage natural predators.</span>
+                    <span lang="hi">1. प्रारंभिक चरण में मक्के के भंवर में सूखी रेत या लकड़ी की राख डालें।<br>2. बीवरिया बेसियाना 5 ग्राम प्रति लीटर पानी में मिलाकर शाम के समय भंवरों में छिड़काव करें।<br>3. खेत में पक्षी अड्डों (bird perches) का निर्माण करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. స్పినోశాడ్ (Spinosad 45% SC) 0.3 మి.లీ లేదా క్లోరాంట్రానిలిప్రోల్ (Chlorantraniliprole 18.5% SC) 0.4 మి.లీ లీటరు నీటికి కలిపి నాజిల్ ను నేరుగా మొక్క సుడిలోకి గురిపెట్టి పిచికారీ చేయాలి.<br>2. ఎమామెక్టిన్ బెంజోయేట్ (Emamectin Benzoate 5% SG) 0.4 గ్రాములు లీటరు చొప్పున స్ప్రే చేయండి.</span>
+                    <span lang="en">1. Spray Chlorantraniliprole 18.5% SC at 0.4ml/L or Spinosad 45% SC at 0.3ml/L directed strictly into the whorl of the plant.<br>2. Spray Emamectin Benzoate 5% SG at 0.4g/L of water under heavy infestations.</span>
+                    <span lang="hi">1. स्पिनोसैड 45% SC 0.3 मिली या क्लोरेंट्रानिलिप्रोल 18.5% SC 0.4 मिली प्रति लीटर पानी में मिलाकर सीधे भंवर में छिड़काव करें।<br>2. एमामेक्टिन बेंजोएट 5% SG 0.4 ग्राम प्रति लीटर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Sugarcane Red Rot -->
+        <div class="disease-accordion" data-crop="sugarcane" data-search="sugarcane red rot చెరకు ఎర్ర కుళ్లు తెగులు ఎర్రకుళ్లు ఎరుపుకుళ్ళు గన్నే కా రెడ్ రాల్ రెడ్ రॉट">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">చెరకు</span>
+                <span lang="en">Sugarcane</span>
+                <span lang="hi">गन्ना</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">చెరకు ఎర్ర కుళ్లు తెగులు (Red Rot)</span>
+                <span lang="en">Sugarcane Red Rot Disease</span>
+                <span lang="hi">गन्ने का रेड रॉट रोग (Sugarcane Red Rot)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మొక్క మూడవ లేదా నాల్గవ ఆకు పసుపుబారి ఎండిపోతుంది. గడను నిలువుగా చీల్చి చూసినప్పుడు లోపలి కణజాలం అంతా ఎరుపు రంగుకు మారి మధ్యలో తెల్లటి అడ్డు పట్టీలు కనిపిస్తాయి. తెగులు సోకిన గడ నుండి ఆల్కహాల్/పుల్లని వాసన వస్తుంది.</span>
+                    <span lang="en">Third or fourth leaf shows yellowing and dries up from margins. Upon splitting the cane longitudinally, the internal pith tissue is red with distinctive white transverse bands. Split canes emit a sour, alcoholic fermentation odor.</span>
+                    <span lang="hi">तीसरी या चौथी पत्ती पीली पड़कर सूखने लगती है। गन्ने को चीरने पर आंतरिक ऊतक लाल रंग के दिखाई देते हैं, जिनमें सफेद अनुप्रस्थ पट्टियां होती हैं। गन्ने से सिरके या अल्कोहल जैसी गंध आती है।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">కొల్లెటోట్రైకమ్ ఫాల్కేటమ్ (Colletotrichum falcatum) అనే శిలీంధ్రం దీనికి కారకం. ప్రధానంగా వ్యాధి సోకిన విత్తన చెరకు వాడటం వల్ల మరియు వర్షాకాలంలో నీరు తోటలో నిలిచిపోవడం వల్ల వ్యాప్తి చెందుతుంది.</span>
+                    <span lang="en">Caused by the fungus Colletotrichum falcatum. Main spread is through infected seed setts (sowing material), poorly drained waterlogged soils, and contaminated irrigation water.</span>
+                    <span lang="hi">कोलेटोट्रिचम फाल्केटम नामक कवक के कारण होता है। मुख्य रूप से संक्रमित बीज सेटों (बुवाई सामग्री) के उपयोग और खेत में जलभराव के कारण फैलता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. వ్యాధి రహిత క్షేత్రాల నుండి విత్తన గడలను సేకరించాలి.<br>2. విత్తే ముందు కనుపులను ట్రికోడెర్మా హార్జియానం (Trichoderma harzianum) ద్రావణంలో శుద్ధి చేయాలి (ఎకరానికి 2.5 కేజీలు).<br>3. తోటలో నీరు నిల్వ లేకుండా నిరంతరం డ్రైనేజీ సదుపాయం మెరుగుపరచాలి.</span>
+                    <span lang="en">1. Source healthy seeds from certified disease-free sugarcane nurseries.<br>2. Treat seed setts with Trichoderma harzianum or Trichoderma viride slurry before planting.<br>3. Ensure proper field drainage and practice crop rotation with paddy or green manures.</span>
+                    <span lang="hi">1. प्रमाणित रोग-मुक्त नर्सरी से स्वस्थ बीज सेट प्राप्त करें।<br>2. रोपण से पहले बीज सेटों को ट्राइकोडर्मा विरिडी के घोल से उपचारित करें।<br>3. खेत में उचित जल निकासी सुनिश्चित करें और धान के साथ फसल चक्र अपनाएं।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">నేరుగా పంటపై చల్లడానికి రసాయన మందులు తక్కువ పని చేస్తాయి. విత్తన శుద్ధి అత్యంత ముఖ్యం.<br>1. విత్తే ముందు కనుపులను 0.1% కార్బెండజిమ్ (Carbendazim 50% WP - లీటరు నీటికి 1 గ్రాము) లేదా ప్రాపికోనజోల్ (Propiconazole) ద్రావణంలో 15 నిమిషాలు నానబెట్టి నాటాలి.</span>
+                    <span lang="en">Foliar chemical sprays are generally ineffective once the disease establishes inside the stem. Focus on preventative sett treatment:<br>1. Soak sugarcane setts in 0.1% Carbendazim 50% WP (1g per liter) or 0.1% Propiconazole solution for 15-20 minutes before planting.</span>
+                    <span lang="hi">रोग लगने के बाद गन्ने पर दवा का छिड़काव अधिक प्रभावी नहीं होता। निवारक बीज उपचार पर ध्यान दें:<br>1. रोपण से पहले बीज सेटों को 0.1% कार्बेन्डाजिम 50% WP (1 ग्राम प्रति लीटर पानी) घोल में 15 मिनट तक भिगोएँ।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Tomato Early Blight -->
+        <div class="disease-accordion" data-crop="tomato" data-search="tomato early blight టొమాటో ఆల్టర్నేరియా ఆకుమచ్చ తెగులు ఎర్లీ బ్లైట్ ఆకుమచ్చ टमाटर का अगेती झुलसा अगेती">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">టొమాటో</span>
+                <span lang="en">Tomato</span>
+                <span lang="hi">टमाटर</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">టొమాటో ఆల్టర్నేరియా ఆకుమచ్చ తెగులు (Early Blight)</span>
+                <span lang="en">Tomato Early Blight</span>
+                <span lang="hi">टमाटर का अगेती झुलसा रोग (Early Blight)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ముందుగా క్రింది వైపు ముదురు ఆకులపై గుండ్రటి గోధుమ, నల్లటి మచ్చలు ఏర్పడతాయి. ఈ మచ్చలలో ఏకకేంద్రక వలయాలు (Target board pattern) స్పష్టంగా కనిపిస్తాయి. ఆకులు పసుపు రంగులోకి మారి రాలిపోతాయి, కాయలపై కూడా నల్లని కుళ్లిపోయిన మచ్చలు వస్తాయి.</span>
+                    <span lang="en">Dark, circular spots with concentric rings resembling a "target-board" appear first on older, lower leaves. Leaves turn yellow and drop prematurely. Sunken dark leathery spots appear near the stem end of fruits.</span>
+                    <span lang="hi">सबसे पहले पुरानी निचली पत्तियों पर संकेंद्रित छल्लों (target board pattern) वाले गोल भूरे या काले धब्बे बनते हैं। पत्तियां पीली होकर गिर जाती हैं। फलों पर भी काले धब्बे बनते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆల్టర్నేరియా సోలాని (Alternaria solani) అనే శిలీంధ్రం వల్ల వస్తుంది. వెచ్చని మరియు తేమతో కూడిన వాతావరణం, తరచుగా పడే కురుమురు వర్షాలు మరియు మొక్కలలో సరైన పోషకాలు లేకపోవడం వల్ల వ్యాపిస్తుంది.</span>
+                    <span lang="en">Caused by the fungus Alternaria solani. Driven by warm temperatures (24-29°C), high humidity, frequent rainy periods alternating with dry spells, and nutrient-deficient weak plants.</span>
+                    <span lang="hi">अल्टरनेरिया सोलेनी नामक कवक के कारण होता है। गर्म और नम मौसम, लगातार बारिश के बाद धूप निकलना, और पौधों में पोषक तत्वों की कमी इसके अनुकूल हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. కింద నేలకు తగిలే ఆకులను తీసివేసి నాశనం చేయాలి.<br>2. 3% పంచగవ్య ద్రావణాన్ని లేదా లీటరు నీటికి 5 గ్రాముల సూడోమోనాస్ ఫ్లోరసెన్స్ కలిపి ఆకులపై చల్లాలి.<br>3. మొక్క మొదట్లో రక్షక పొరగా వైకోలు లేదా ఎండుగడ్డితో మల్చింగ్ చేయాలి.</span>
+                    <span lang="en">1. Prune lower diseased leaves to improve aeration and prevent soil-borne splash transmission.<br>2. Spray 3% Panchagavya solution or Pseudomonas fluorescens at 5g/L of water regularly.<br>3. Apply thick straw mulching around the root zone to prevent soil splash on lower leaves.</span>
+                    <span lang="hi">1. जमीन को छूने वाली पुरानी और संक्रमित पत्तियों को हटाकर नष्ट कर दें।<br>2. 3% पंचगव्य घोल या स्यूडोमोनास फ्लोरेसेंस 5 ग्राम प्रति लीटर पानी में मिलाकर पत्तियों पर स्प्रे करें।<br>3. पौधों के चारों ओर पुआल की मल्चिंग करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. మాంకోజెబ్ (Mancozeb 75% WP) 2.5 గ్రాములు లేదా కాపర్ ఆక్సిక్లోరైడ్ (COC 50% WP) 3 గ్రాములు లీటరు నీటికి చొప్పున కలిపి ఆకులు పూర్తిగా తడిచేలా పిచికారీ చేయాలి.<br>2. తీవ్రత ఉంటే టెబుకోనజోల్ + ట్రైఫ్లోక్సిస్ట్రోబిన్ (Nativo 75 WG) 0.5 గ్రాములు లీటరు నీటికి పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Spray Mancozeb 75% WP at 2.5g/L or Copper Oxychloride 50% WP at 3g/L of water at the first sign of leaf spots.<br>2. For advanced control, spray Tebuconazole + Trifloxystrobin (Nativo 75 WG) at 0.5g/L of water.</span>
+                    <span lang="hi">1. मैंकोजेब 75% WP 2.5 ग्राम या कॉपर ऑक्सीक्लोराइड 3 ग्राम प्रति लीटर पानी में मिलाकर स्प्रे करें।<br>2. अधिक संक्रमण होने पर टेबुकोनाज़ोल + ट्राइफ्लोक्सीस्ट्रोबिन (Nativo 75 WG) 0.5 ग्राम प्रति लीटर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Tobacco Mosaic Virus -->
+        <div class="disease-accordion" data-crop="tobacco" data-search="tobacco mosaic virus పొగాకు మోజాయిక్ వైరస్ టి.ఎమ్.వి tmv తంబాకూ కా మోజెక్ వైరస్ మోజెక్">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">పొగాకు</span>
+                <span lang="en">Tobacco</span>
+                <span lang="hi">तंबाकू</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">పొగాకు మోజాయిక్ వైరస్ (TMV)</span>
+                <span lang="en">Tobacco Mosaic Virus (TMV)</span>
+                <span lang="hi">तंबाकू का मोज़ेक वायरस (Tobacco Mosaic Virus)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకులపై పసుపు మరియు పచ్చని రంగు మచ్చలు ఒక మోజాయిక్ పద్ధతిలో చారలుగా కనిపిస్తాయి. ఆకులు ముడతలు పడి గిడసబారిపోతాయి. తీవ్ర దశలో ఆకులు సన్నని పట్టీలుగా మారి పిల్లి గోళ్ల వలె వంకరలు తిరిగిపోతాయి (Fern leaf effect).</span>
+                    <span lang="en">Leaves show mottling with light and dark green mosaic patches. Leaves become blistered, distorted, and stunted. In severe cases, the leaf lamina reduces significantly, leaving a narrow strap-like leaf (fern leaf effect).</span>
+                    <span lang="hi">पत्तियों पर गहरे और हल्के हरे रंग के धब्बे मोज़ेक पैटर्न में दिखाई देते हैं। पत्तियां सिकुड़ जाती हैं और उनका विकास रुक जाता है। कभी-कभी पत्तियां पतली और मुड़ी हुई कोड़े जैसी हो जाती हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">టొబాకో మోజాయిక్ వైరస్ (Tobacco Mosaic Virus) వల్ల వస్తుంది. ఇది అత్యంత నిలకడగల వైరస్. ఇది కేవలం రైతుల స్పర్శ, బట్టలు, వ్యవసాయ పనిముట్ల ద్వారా మరియు సోకిన విత్తనాల ద్వారా ఒక మొక్క నుండి మరొక దానికి వ్యాపిస్తుంది.</span>
+                    <span lang="en">Caused by the Tobacco Mosaic Virus (TMV). It is an extremely stable virus that is easily transmitted mechanically via the hands of farmers, tools, clothing, and crop debris. Not transmitted by insects.</span>
+                    <span lang="hi">तंबाकू मोज़ेक वायरस (TMV) के कारण होता है। यह एक अत्यधिक स्थिर वायरस है जो हवा या कीड़ों से नहीं, बल्कि मनुष्यों के स्पर्श, कृषि उपकरणों और कपड़ों के माध्यम से फैलता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. తోటలోకి ప్రవేశించే ముందు చేతులను సబ్బు నీటితో లేదా వేడి పాలతో శుభ్రంగా కడుక్కోవాలి.<br>2. తెగులు సోకిన మొక్కలను పీకి పొలానికి దూరంగా కాల్చివేయాలి.<br>3. వేప గింజల కషాయం 5% స్ప్రే చేయడం వల్ల మొక్కకు నిరోధకత పెరుగుతుంది.</span>
+                    <span lang="en">1. Workers must wash hands with soap and running water or skimmed milk before touching tobacco plants.<br>2. Rogue out and completely burn infected plants as soon as noticed.<br>3. Spray Neem Seed Kernel Extract (NSKE) 5% to stimulate host resistance.</span>
+                    <span lang="hi">1. खेत में प्रवेश करने और काम करने से पहले हाथों को साबुन या दूध के घोल से अच्छी तरह धो लें।<br>2. संक्रमित पौधों को तुरंत उखाड़कर खेत से दूर जला दें।<br>3. पौधे की रोग प्रतिरोधक क्षमता बढ़ाने के लिए 5% नीम बीज अर्क स्प्रे करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">వైరస్ కు నిర్దిష్ట రసాయన నాశిని ఏదీ లేదు. నివారణ చర్యలు మాత్రమే అరికట్టగలవు. రసాయన క్రిమిసంహారకాలకు వైరస్ లొంగదు. అయితే ప్రాథమిక దశలో ట్రైసోడియం ఫాస్ఫేట్ (Trisodium Phosphate) ద్రావణాన్ని పరికరాల శుద్ధికి వాడవచ్చు.</span>
+                    <span lang="en">There is no direct chemical control or viricide available to cure TMV-infected crops. Sanitize tools with a 10% Trisodium Phosphate (TSP) solution to prevent spread. Focus strictly on sanitation and cultural control.</span>
+                    <span lang="hi">वायरस को खत्म करने के लिए कोई प्रत्यक्ष रासायनिक दवा या विषाणुनाशक (viricide) उपलब्ध नहीं है। केवल कृषि उपकरणों को 10% ट्राइसोडियम फॉस्फेट घोल से कीटाणुरहित किया जा सकता है।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Rice Brown Plant Hopper -->
+        <div class="disease-accordion" data-crop="rice" data-search="rice brown plant hopper వరి సుడి దోమ సుడిదోమ దూమ పచ్చ దోమ धान का भूरा फुदका">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">వరి</span>
+                <span lang="en">Rice / Paddy</span>
+                <span lang="hi">धान</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">వరి సుడి దోమ (Brown Plant Hopper)</span>
+                <span lang="en">Rice Brown Plant Hopper (BPH)</span>
+                <span lang="hi">धान का भूरा फुदका रोग (Brown Plant Hopper)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">పొలంలో అక్కడక్కడా పంట మొక్కలు ఎండిపోయి పసుపు రంగులోకి మారి సుడులుగా కనిపిస్తాయి (Hopper Burn). మొక్క మొదళ్లలో పరిశీలిస్తే గోధుమ రంగులో ఉండే చిన్న రెక్కల పురుగులు గుంపులు గుంపులుగా రసాన్ని పీలుస్తూ కనిపిస్తాయి.</span>
+                    <span lang="en">Yellowing and rapid drying of crops in circular patches, creating a burnt appearance called "hopper burn". Thousands of tiny brown planthoppers cluster at the stem base, sucking the sap from vascular tissues.</span>
+                    <span lang="hi">खेत में पौधे गोलाकार क्षेत्रों (पैच) में सूखकर पीले पड़ जाते हैं, जिसे 'हॉपर बर्न' (hopper burn) कहा जाता है। पौधों के आधार पर छोटे भूरे रंग के कीड़े झुंड में रस चूसते नजर आते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">నిలాపర్వత లుజెన్స్ (Nilaparvata lugens) అనే కీటకం వల్ల వస్తుంది. పొలంలో నిరంతరం నీరు నిలబెట్టడం, నత్రజని అధికంగా వాడటం మరియు గాలి చొరబడని విధంగా అతి దగ్గరగా నాట్లు వేయడం వల్ల ఈ పురుగు ఉధృతి నెల్లూరు జిల్లాలో అత్యధికంగా ఉంటుంది.</span>
+                    <span lang="en">Caused by the insect Nilaparvata lugens. High humidity, excessive application of nitrogenous fertilizers, narrow spacing (lack of aeration), and stagnant water logging favor pest outbreaks.</span>
+                    <span lang="hi">निलापर्वता लुजेंस नामक कीट के कारण होता है। खेत में लगातार पानी भरे रहने, यूरिया के अधिक प्रयोग और हवा रुकने (सघन बुवाई) के कारण यह प्रकोप बढ़ता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. నాట్లు వేసేటప్పుడు ప్రతి 2 మీటర్ల దూరానికి 20 సెం.మీ పాయలు (అల్లే మార్గం) వదలాలి.<br>2. పొలంలో నీటిని పూర్తిగా తీసివేసి 3-4 రోజులు ఆరబెట్టాలి.<br>3. వేప నూనె (10,000 PPM) 3 మి.లీ లీటరు నీటికి చొప్పున కలిపి నాజిల్ ను మొక్క మొదళ్ల వైపు గురిపెట్టి పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Maintain alleyways (paya) of 20cm after every 2 meters of planting to ensure light and wind penetration.<br>2. Drain the standing water completely from the field and dry the soil for 3-4 days.<br>3. Spray Neem Oil (10,000 PPM) at 3ml/L of water directly at the basal parts of the plant.</span>
+                    <span lang="hi">1. हवा और धूप के लिए हर 2 मीटर के बाद 20 सेमी की गलियां (paya) छोड़ें।<br>2. खेत से सारा पानी निकाल दें और मिट्टी को 3-4 दिनों के लिए सुखा लें।<br>3. नीम तेल (10,000 PPM) 3 मिली प्रति लीटर पानी में मिलाकर सीधे पौधों के आधार पर स्प्रे करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పీమెట్రోజైన్ (Pymetrozine 50% WG) 0.6 గ్రాములు లేదా డైనోటెఫురాన్ (Dinotefuran 20% SG) 0.4 గ్రాములు లీటరు నీటికి చొప్పున కలిపి మొక్క మొదళ్లు తడిచేలా పిచికారీ చేయాలి. పంప్ ప్రెజర్ తక్కువగా ఉంచి స్ప్రే చేయండి.</span>
+                    <span lang="en">1. Spray Pymetrozine 50% WG at 0.6g/L or Dinotefuran 20% SG at 0.4g/L of water. Direct the spray nozzle to the base of the crop, keeping the sprayer pressure low.</span>
+                    <span lang="hi">1. पाइमेट्रोज़िन 50% WG 0.6 ग्राम या डिनोटेफुरन 20% SG 0.4 ग्राम प्रति लीटर पानी में मिलाकर पौधों के निचले हिस्से में छिड़काव करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Cotton Bollworm -->
+        <div class="disease-accordion" data-crop="cotton" data-search="cotton bollworm పత్తి కాయ తొలిచే పురుగు శనగ పచ్చ పురుగు గులాబీ రంగు కాయతొలిచే పురుగు कपास का डोडा कीट डोडा">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">పత్తి</span>
+                <span lang="en">Cotton</span>
+                <span lang="hi">कपास</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">పత్తి కాయ తొలిచే పురుగు (Cotton Bollworm)</span>
+                <span lang="en">Cotton Bollworm Complex / Helicoverpa</span>
+                <span lang="hi">कपास का डोडा कीट (Cotton Bollworm)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మొక్క లేత చిగుళ్లు కత్తిరించబడతాయి. చదరపు మొగ్గలు మరియు పూత రాలిపోతుంది. పత్తి కాయలకు రంధ్రాలు పడి లోపల ఉన్న గింజలను లార్వా తినేస్తుంది. తింటున్నప్పుడు పురుగు సగం శరీరం కాయ బయట, సగం లోపల ఉంటుంది. గులాబీ రంగు పురుగు లోపలే ఉండి కాయను పాడు చేస్తుంది.</span>
+                    <span lang="en">Bored holes in buds, flowers, and bolls. Larvae consume internal seeds and lint. Typical feeding posture of Helicoverpa shows the larva with half of its body inside the boll and half hanging outside. Pink bollworm larvae feed entirely inside the boll.</span>
+                    <span lang="hi">कलियों और डोडों (bolls) में छेद हो जाते हैं। लार्वा अंदर के बीजों और रेशों को खा जाता है। खाते समय लार्वा का आधा शरीर डोडे के बाहर और आधा अंदर लटकता दिखाई देता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">హెలికోవెర్ప అర్మిజెర (Helicoverpa armigera - శనగపచ్చ పురుగు) మరియు పెక్టినోఫోర గాసిపియెల్లా (Pink Bollworm) కీటకాల వల్ల వస్తుంది. ఏకపక్ష ఎరువుల వాడకం మరియు గుంటూరు ప్రాంతంలో వరుస పత్తి సాగు వల్ల నిరోధకత పెరిగింది.</span>
+                    <span lang="en">Caused by larvae of moths Helicoverpa armigera and Pectinophora gossypiella. Driven by high monoculture acreage of cotton, improper irrigation, and heavy resistance built up against common pyrethroids.</span>
+                    <span lang="hi">हेलिकोवर्पा आर्मिगेरा (चना फली छेदक) और गुलाबी डोडा कीट के लार्वा के कारण होता है। कपास की लगातार खेती और असंतुलित खाद इसके मुख्य कारण हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పత్తి చుట్టూ బంతి లేదా ఆముదం మొక్కలను రక్షక పంటగా నాటాలి (ఆకర్షించడానికి).<br>2. ఎకరానికి 5 లింగమార్పిడి బుట్టలను (Pheromone traps) అమర్చి పురుగుల ఉనికిని గమనించాలి.<br>3. శనగ పచ్చ పురుగు నివారణకు NPV ద్రావణాన్ని ఎకరానికి 100 LE చొప్పున సాయంత్రం పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Plant marigold or castor as trap crops around the cotton field boundaries to divert egg-laying moths.<br>2. Install pheromone traps at 5 per acre for monitoring and mass trapping male moths.<br>3. Spray Helicoverpa NPV (Nuclear Polyhedrosis Virus) at 100 LE per acre mixed with jaggery in the evening.</span>
+                    <span lang="hi">1. खेत के चारों ओर गेंदा या अरंडी को जाल (trap) फसल के रूप में लगाएं।<br>2. नर पतंगों को फंसाने के लिए 5 फेरोमोन ट्रैप (pheromone traps) प्रति एकड़ लगाएं।<br>3. शाम को 100 LE प्रति एकड़ की दर से NPV घोल का छिड़काव करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. గుడ్డు దశలో ప్రొఫెనోఫాస్ (Profenofos 50% EC) 2 మి.లీ చొప్పున లీటరుకు పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Spray Profenofos 50% EC at 2ml/L of water during egg/early larval stages.<br>2. For larger larvae, spray Flubendiamide 39.35% SC at 0.2ml/L or Chlorantraniliprole 18.5% SC at 0.3ml/L of water.</span>
+                    <span lang="hi">1. अंडा अवस्था में प्रोफेनोफोस 50% EC 2 मिली प्रति लीटर पानी में मिलाकर स्प्रे करें।<br>2. बड़े लार्वा के लिए फ्लुबेंडियामाइड 39.35% SC 0.2 मिली या क्लोरेंट्रानिलिप्रोल 0.3 मिली प्रति लीटर पानी में स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Chilli Black Thrips -->
+        <div class="disease-accordion" data-crop="chilli" data-search="chilli black thrips మిరప నల్ల తామర పురుగులు తామరపురుగులు నల్లతామర मिर्च के काले थ्रिप्स काले थ्रिप्स">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">మిరప</span>
+                <span lang="en">Chilli</span>
+                <span lang="hi">मिर्च</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">మిరప నల్ల తామర పురుగులు (Black Thrips)</span>
+                <span lang="en">Chilli Black Thrips Infestation</span>
+                <span lang="hi">मिर्च के काले थ्रिप्स (Black Thrips)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">పూలలో రేకులు ముదురు రంగుకు మారి రాలిపోతాయి. పూత విపరీతంగా తగ్గిపోతుంది. ఆకుల అడుగు భాగాన గోధుమ రంగు మచ్చలు ఏర్పడి ఆకులు పైకి దోనెల్లా ముడుచుకుపోతాయి. చిన్న పూమొగ్గలు విచ్చుకోకుండానే ఎండి రాలిపోతాయి.</span>
+                    <span lang="en">Extensive drop of flowers and young buds. Petals show dark feeding scars. Leaves curl upwards in cup shapes. Heavy gathering of black, needle-thin tiny insects inside the flowers, destroying pollen and ovaries.</span>
+                    <span lang="hi">फूलों की पंखुड़ियां काली पड़कर गिरने लगती हैं। फूल आना काफी कम हो जाता है। पत्तियां ऊपर की ओर मुड़कर नाव (कप) के आकार की हो जाती हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">త్రిప్స్ పర్విస్పినస్ (Thrips parvispinus) అనే విదేశీ నల్ల తామర పురుగు దీనికి కారకం. గుంటూరు, నెల్లూరు జిల్లాలలో అత్యధిక నష్టం కలిగిస్తోంది. పొడి వాతావరణం, అధిక నత్రజని వాడకం, రసాయన మందుల విచక్షణారహిత వాడకం దీనికి కారణాలు.</span>
+                    <span lang="en">Caused by the invasive black thrip species Thrips parvispinus. It multiplies rapidly during dry spell seasons. Overuse of chemical pyrethroids has destroyed natural predators, causing severe outbreaks in Guntur.</span>
+                    <span lang="hi">थ्रिप्स परविस्पिनस नामक आक्रामक कीट के कारण होता है। शुष्क मौसम, यूरिया का अधिक प्रयोग और कीटनाशकों का अंधाधुंध उपयोग इस कीट को बढ़ावा देता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. నీలి జిగురు అట్టలను ఎకరానికి 30 నుండి 40 చొప్పున అమర్చాలి (ఇవి నల్ల తామర పురుగులను ఆకర్షిస్తాయి).<br>2. వర్టిసిలియం లెకాని (Verticillium lecanii) శిలీంధ్ర పొడిని లీటరు నీటికి 5 గ్రాముల చొప్పున కలిపి సాయంత్రం వేళల్లో పూలు బాగా తడిచేలా పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Install Blue sticky traps at 30-40 per acre (blue color strongly attracts black thrips).<br>2. Spray bio-pesticide Verticillium lecanii at 5g/L of water in late evenings, targeting the flowers.<br>3. Apply Neem cake in soil (250 kg/acre).</span>
+                    <span lang="hi">1. नीले चिपचिपे जाल (30-40 प्रति एकड़) लगाएं, क्योंकि नीला रंग थ्रिप्स को अत्यधिक आकर्षित करता है।<br>2. जैव कीटनाशक वर्टिसिलियम लेकानी 5 ग्राम प्रति लीटर पानी में मिलाकर शाम को छिड़कें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఇది చాలా నిరోధకత గల పురుగు. మందులు మార్చి మార్చి పిచికారీ చేయాలి.<br>1. స్పినెటోరమ్ (Spinetoram 11.7% SC) 0.9 మి.లీ లేదా ఫిప్రోనిల్ (Fipronil 80% WG) 0.3 గ్రాములు లీటరు నీటికి చొప్పున పిచికారీ చేయాలి.<br>2. తీవ్రత అధికంగా ఉన్నప్పుడు ఫ్లోనికామిడ్ (Flonicamid 50% WG) 0.3 గ్రాములు లీటరుకు స్ప్రే చేయండి.</span>
+                    <span lang="en">Black thrips show heavy resistance. Rotate chemistry:<br>1. Spray Spinetoram 11.7% SC at 0.9ml/L or Fipronil 80% WG at 0.3g/L.<br>2. Under severe infestation, spray Flonicamid 50% WG at 0.3g/L or Acetamiprid combined with bifenthrin.</span>
+                    <span lang="hi">यह बहुत प्रतिरोधी कीट है। दवाओं को बदल-बदल कर स्प्रे करें:<br>1. स्पिनेटोरम 11.7% SC 0.9 मिली या फ़िप्रोनिल 80% WG 0.3 ग्राम प्रति लीटर पानी में मिलाकर स्प्रे करें।<br>2. अधिक प्रकोप होने पर फ्लोनिकैमिड 50% WG 0.3 ग्राम/लीटर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Tomato Leaf Curl -->
+        <div class="disease-accordion" data-crop="tomato" data-search="tomato leaf curl టొమాటో ఆకు ముడుత తెగులు బొబ్బ తెగులు తెల్లదోమ टमाटर लीफ कर्ल लीफ कर्ल">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">టొమాటో</span>
+                <span lang="en">Tomato</span>
+                <span lang="hi">टमाटर</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">టొమాటో ఆకు ముడుత తెగులు (Leaf Curl)</span>
+                <span lang="en">Tomato Leaf Curl Begomovirus</span>
+                <span lang="hi">टमाटर लीफ कर्ल रोग (Tomato Leaf Curl)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకుల అంచులు పసుపుబారి పైకి ముడుచుకుపోతాయి (Cup-shaped curling). ఆకులు చిన్నవిగా మారి పెళుసుగా తయారవుతాయి. మొక్క ఎదుగుదల కుంటుపడి పొద లాగా మారుతుంది. పూత రాలిపోయి, కాయలు పిందె దశలోనే రాలిపోతాయి.</span>
+                    <span lang="en">Leaves show upward curling of margins, severe yellowing (chlorosis), and reduction in size. Internodes are shortened, giving the plant a stunted, bushy growth. Fruits fail to set or drop at initial stages.</span>
+                    <span lang="hi">पत्तियों के किनारे पीले होकर ऊपर की ओर मुड़ जाते हैं (कप का आकार)। पत्तियां छोटी और कठोर हो जाती हैं। पौधा झाड़ीनुमा हो जाता है, फूल और फल बहुत कम लगते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">టొమాటో లీఫ్ కర్ల్ వైరస్ (Tomato Leaf Curl Virus - ToLCV) వల్ల వస్తుంది. దీనిని ఒక మొక్క నుండి మరొక దానికి 'తెల్ల దోమ' (Bemisia tabaci) మోసుకెళ్తుంది. అధిక వేడి మరియు పొడి వాతావరణం తెల్ల దోమల గుణీకారానికి బాగా దోహదం చేస్తాయి.</span>
+                    <span lang="en">Caused by Tomato Leaf Curl Virus, belonging to Begomovirus genus. It is transmitted solely by the sweetpotato whitefly (Bemisia tabaci). High temperature and dry spells favor the whitefly vector population.</span>
+                    <span lang="hi">टमाटर लीफ कर्ल वायरस (ToLCV) के कारण होता है। इसे सफेद मक्खी (Bemisia tabaci) द्वारा फैलाया जाता है। गर्म और शुष्क जलवायु सफेद मक्खी के प्रजनन के अनुकूल है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. నారుమడి దశలోనే 40 మెష్ నైలాన్ నెట్ ఉపయోగించి నారును సంరక్షించాలి.<br>2. పొలంలో ఎల్లో జిగురు అట్టలను ఎకరానికి 20 చొప్పున పెట్టాలి.<br>3. వేప నూనె (10,000 PPM) 2 మి.లీ చొప్పున లీటరు నీటికి కలిపి ప్రతి 10 రోజులకొకసారి తెల్లదోమ ఉధృతిని బట్టి పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Protect tomato nurseries using a 40-mesh nylon insect net to prevent early whitefly attacks.<br>2. Install yellow sticky traps (20 per acre) to monitor and catch adult whiteflies.<br>3. Spray Neem Oil (10,000 PPM) at 2ml/L of water at 10-day intervals.</span>
+                    <span lang="hi">1. नर्सरी को सफेद मक्खी से बचाने के लिए 40-मेश नायलॉन नेट से ढकें।<br>2. पीले चिपचिपे जाल (20 प्रति एकड़) लगाएं।<br>3. नीम का तेल (10,000 PPM) 2 मिली प्रति लीटर पानी में मिलाकर हर 10 दिनों में छिड़कें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">తెల్లదోమ నియంత్రణే ఏకైక మార్గం.<br>1. ఇమిడాక్లోప్రిడ్ (Imidacloprid 17.8% SL) 0.3 మి.లీ లేదా ఎసిటామిప్రిడ్ (Acetamiprid 20% SP) 0.2 గ్రాములు లీటరు నీటికి చొప్పున కలిపి ఆకుల అడుగుభాగం తడిచేలా పిచికారీ చేయాలి.<br>2. ఉధృతి ఎక్కువ ఉన్నప్పుడు డయాఫెంథియురాన్ (Diafenthiuron 50% WP) 1.2 గ్రాములు చొప్పున స్ప్రే చేయండి.</span>
+                    <span lang="en">Focus entirely on controlling the whitefly vector:<br>1. Spray Imidacloprid 17.8% SL at 0.3ml/L or Acetamiprid 20% SP at 0.2g/L of water, ensuring thorough coverage of leaf undersides.<br>2. For severe vector populations, spray Diafenthiuron 50% WP at 1.2g/L of water.</span>
+                    <span lang="hi">सफेद मक्खी का नियंत्रण ही एकमात्र उपाय है:<br>1. इमिडाक्लोप्रिड 17.8% SL 0.3 मिली या एसिटामिप्रिड 20% SP 0.2 ग्राम प्रति लीटर पानी में मिलाकर पत्तियों के नीचे छिड़काव करें।<br>2. गंभीर स्थिति में डायफेंटिथियूरॉन 50% WP 1.2 ग्राम/लीटर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Groundnut Bud Necrosis -->
+        <div class="disease-accordion" data-crop="groundnut" data-search="groundnut bud necrosis వేరుశెనగ మొగ్గ కుళ్లు తెగులు మొగ్గకుళ్ళు తామరపురుగులు मूंगफली का बड नेक्रोसिस बड नेक्रोसिस">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">వేరుశెనగ</span>
+                <span lang="en">Groundnut</span>
+                <span lang="hi">मूंगफली</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">వేరుశెనగ మొగ్గ కుళ్లు తెగులు (Bud Necrosis)</span>
+                <span lang="en">Groundnut Bud Necrosis Virus (GBNV)</span>
+                <span lang="hi">मूंगफली का बड नेक्रोसिस रोग (Bud Necrosis)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మొక్క ప్రధాన మొగ్గ మరియు లేత రెమ్మలు ఎండిపోయి ముదురు రంగుకు మారి కుళ్లిపోతాయి (Bud Necrosis). ఆకులపై పసుపు రంగు రింగుల వంటి మచ్చలు కనిపిస్తాయి. మొక్కలు నిలువుగా పెరగకుండా పక్కలకు పొదలా పెరుగుతాయి, కాయలు చాలా చిన్నవిగా ఏర్పడతాయి.</span>
+                    <span lang="en">Terminal bud shows chlorotic ring spots and eventually undergoes necrosis (drying). Auxiliary buds sprout, giving a bushy stunted appearance. Leaves become small and distorted. Pod size and count decrease severely.</span>
+                    <span lang="hi">पौधे की शीर्ष कली और नई शाखाएं सूख जाती हैं (Bud Necrosis)। पत्तियों पर पीले संकेंद्रित छल्ले (rings) बनते हैं। पौधा झाड़ीनुमा हो जाता है और बहुत छोटे दाने बनते हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ట్రైప్స్ (Thrips) కీటకాల ద్వారా వ్యాపించే తోస్పోవైరస్ (Tospovirus) వల్ల వస్తుంది. రబీ సీజన్ లో పొడి వాతావరణం ఉన్నప్పుడు మరియు కలుపు మొక్కలు ఎక్కువగా ఉన్నప్పుడు ఈ తెగులు వ్యాప్తి నెల్లూరు, ప్రకాశం ప్రాంతాల్లో ఎక్కువగా ఉంటుంది.</span>
+                    <span lang="en">Caused by Groundnut Bud Necrosis Tospovirus (GBNV), transmitted efficiently by thrips (Frankliniella schultzei). Severe in hot dry seasons and weed-infested fields.</span>
+                    <span lang="hi">थ्रिप्स कीट द्वारा फैलाए जाने वाले टोस्पोवायरस (GBNV) के कारण होता है। रबी मौसम में शुष्क जलवायु और खेत में खरपतवार होने पर प्रकोप अधिक होता है।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. పంట కాలం ప్రారంభంలోనే పొలంలో కలుపును పూర్తిగా తీసివేయాలి.<br>2. వేరుశెనగతో పాటు సజ్జ లేదా జొన్న పంటలను అంతర పంటలుగా (Intercrop) 7:1 నిష్పత్తిలో నాటాలి.<br>3. వేప గింజల కషాయం 5% లేదా జీవామృతం 10% పిచికారీ చేయడం వల్ల నిరోధకత పెరుగుతుంది.</span>
+                    <span lang="en">1. Maintain clean cultivation and remove alternative weed hosts around the field borders.<br>2. Intercrop groundnut with pearl millet (bajra) or sorghum in a 7:1 ratio to disrupt thrips flight.<br>3. Spray 5% Neem Seed Kernel Extract (NSKE) to deter thrips.</span>
+                    <span lang="hi">1. बुवाई के तुरंत बाद खेत और मेड़ों को खरपतवार मुक्त रखें।<br>2. मूंगफली के साथ बाजरा या ज्वार को 7:1 के अनुपात में सह-फसल (intercrop) के रूप में उगाएं।<br>3. नीम बीज अर्क (NSKE) 5% का छिड़काव करें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">వైరస్ కు నేరుగా మందు లేదు. తామర పురుగుల నివారణ ముఖ్యం.<br>1. విత్తన శుద్ధికి ఇమిడాక్లోప్రిడ్ (Imidacloprid 600 FS) 6.5 మి.లీ కిలో విత్తనానికి చొప్పున వాడాలి.<br>2. మొలకెత్తిన 30 రోజులకు డైమిథోయేట్ (Dimethoate 30% EC) 2 మి.లీ లేదా మోనోక్రోటోఫాస్ (Monocrotophos) 1.6 మి.లీ లీటరు నీటికి చొప్పున పిచికారీ చేయాలి.</span>
+                    <span lang="en">Focus strictly on controlling the thrips vector:<br>1. Treat seeds with Imidacloprid 600 FS at 6.5ml/kg seed to protect early stages.<br>2. Spray Dimethoate 30% EC at 2ml/L or Imidacloprid 17.8% SL at 0.3ml/L of water at 30 days after sowing.</span>
+                    <span lang="hi">थ्रिप्स के नियंत्रण के लिए:<br>1. रोपण से पहले प्रति किलोग्राम बीज को 6.5 मिली इमिडाक्लोप्रिड 600 FS से उपचारित करें।<br>2. बुवाई के 30 दिन बाद डाइमेथोएट 30% EC 2 मिली या इमिडाक्लोप्रिड 0.3 मिली प्रति लीटर पानी में मिलाकर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Maize Downy Mildew -->
+        <div class="disease-accordion" data-crop="maize" data-search="maize downy mildew మొక్కజొన్న బూజు తెగులు ఆకుపచ్చ చారల తెగులు బూజుమచ్చ మक्के का डाउनी मिल्ड्यू डाउनी मिल्ड्यू">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">మొక్కజొన్న</span>
+                <span lang="en">Maize</span>
+                <span lang="hi">मक्का</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">మొక్కజొన్న బూజు తెగులు (Downy Mildew)</span>
+                <span lang="en">Maize Downy Mildew Disease</span>
+                <span lang="hi">मक्के का डाउनी मिल्ड्यू रोग (Downy Mildew)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">ఆకులపై పొడవైన తెల్లటి లేదా పసుపు రంగు నిలువు చారలు ఏర్పడతాయి. ఉదయం పూట పరిశీలిస్తే ఆకు అడుగు భాగంలో తెల్లటి బూజు వంటి శిలీంధ్ర పెరుగుదల స్పష్టంగా కనిపిస్తుంది. మొక్కల కణుపుల మధ్య దూరం తగ్గి, గిడసబారిపోయి కంకులు వేయవు (Crazy top).</span>
+                    <span lang="en">Long, narrow, chlorotic (yellowish) stripes run along the length of leaves. In early mornings, a white downy fungal growth is visible on the leaf undersides. Infected plants are severely stunted and fail to produce cobs.</span>
+                    <span lang="hi">पत्तियों पर लंबी सफेद या पीली धारियां बन जाती हैं। सुबह के समय पत्ती की निचली सतह पर सफेद मखमली फंगस (बूजू) दिखाई देती है। पौधों में भुट्टे नहीं बनते।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">పెరోనోస్క్లెరోస్పోరా సోర్గీ (Peronosclerospora sorghi) శిలీంధ్రం వల్ల వస్తుంది. చల్లటి రాత్రి వేళలు (20-22°C), గాలిలో అధిక తేమ, మంచు కురవడం మరియు నీరు నిలిచిపోయే నల్ల నేలల్లో దీని తీవ్రత ఎక్కువగా ఉంటుంది.</span>
+                    <span lang="en">Caused by the fungus Peronosclerospora sorghi. Favored by cool night temperatures (20-22°C), high relative humidity (above 90%), foggy mornings, and poorly drained clay soils.</span>
+                    <span lang="hi">पेरोनोस्क्लेरोस्पोरा सोर्गी कवक के कारण होता है। ठंडी रातें (20-22 डिग्री सेल्सियस), उच्च आर्द्रता और जलभराव वाली मिट्टी इसके अनुकूल हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. తెగులును తట్టుకునే రకాలను సాగు చేయాలి.<br>2. సూడోమోనాస్ ఫ్లోరసెన్స్ (Pseudomonas fluorescens) 10 గ్రాములు కిలో విత్తనానికి చొప్పున కలిపి విత్తన శుద్ధి చేయాలి.<br>3. వ్యాధి సోకిన మొక్కలను పీకి నాశనం చేయాలి.</span>
+                    <span lang="en">1. Cultivate disease-resistant hybrids suited for Guntur/Nellore zones.<br>2. Treat seed with Pseudomonas fluorescens bio-agent at 10g/kg of seed to protect seedlings.<br>3. Uproot and burn systemic-infected seedlings immediately to prevent spore dispersal.</span>
+                    <span lang="hi">1. रोग-प्रतिरोधी संकर किस्मों का चयन करें।<br>2. बीजों को स्यूडोमोनास फ्लोरेसेंस (10 ग्राम प्रति किलोग्राम) से उपचारित करें।<br>3. रोगग्रस्त पौधों को उखाड़कर नष्ट कर दें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. విత్తన శుద్ధి అత్యంత ముఖ్యం: కిలో విత్తనానికి మెటాలాక్సిల్ (Metalaxyl 35% SD) 6 గ్రాములు కలిపి విత్తన శుద్ధి చేయాలి.<br>2. మొలకెత్తిన 20 రోజులకు మెటాలాక్సిల్ + మాంకోజెబ్ (Ridomil Gold) 2.5 గ్రాములు లీటరు నీటికి చొప్పున పిచికారీ చేయాలి.</span>
+                    <span lang="en">1. Highly effective preventive seed treatment: Metalaxyl 35% SD at 6g/kg of seed before sowing.<br>2. Spray Metalaxyl 8% + Mancozeb 64% WP (Ridomil Gold) at 2.5g/L of water at 20 days crop age.</span>
+                    <span lang="hi">1. बीज उपचार: बुवाई से पहले प्रति किलोग्राम बीज में मेटलैक्सिल 35% SD 6 ग्राम मिलाकर उपचारित करें।<br>2. बुवाई के 20 दिन बाद मेटलैक्सिल + मैंकोजेब 2.5 ग्राम प्रति लीटर पानी में मिलाकर स्प्रे करें।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Sugarcane Smut -->
+        <div class="disease-accordion" data-crop="sugarcane" data-search="sugarcane smut చెరకు కాటుక తెగులు నల్లకొరడా కొరడా తెగులు గన్నే కా कंडुआ रोग कंडुआ">
+          <div class="disease-header" onclick="toggleAccordion(this)">
+            <div class="disease-header-info">
+              <span class="disease-crop-badge font-mono">
+                <span lang="te" class="telugu">చెరకు</span>
+                <span lang="en">Sugarcane</span>
+                <span lang="hi">गन्ना</span>
+              </span>
+              <h3 class="disease-title ui">
+                <span lang="te" class="telugu">చెరకు కాటుక తెగులు (Smut)</span>
+                <span lang="en">Sugarcane Smut Disease</span>
+                <span lang="hi">गन्ने का कंडुआ रोग (Sugarcane Smut)</span>
+              </h3>
+            </div>
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </div>
+          <div class="disease-content">
+            <div class="disease-content-inner">
+              <div class="disease-details-grid ui">
+                <div class="detail-card">
+                  <div class="detail-card-title">🚨 <span lang="te" class="telugu">వ్యాధి లక్షణాలు</span><span lang="en">Symptoms</span><span lang="hi">लक्षण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">మొక్క మొవ్వు/చిగురు నుండి పొడవైన, నల్లటి కొరడా వంటి నిర్మాణం (Black whip-like structure) వస్తుంది. ఈ కొరడా మొదట తెల్లటి పొరతో కప్పబడి ఉంటుంది, తరువాత పగిలి నల్లటి బొగ్గు లాంటి శిలీంధ్ర పొడి (Spores) గాల్లోకి విడుదలవుతుంది. మొక్క గిడసబారి సన్నని గడలుగా మారుతుంది.</span>
+                    <span lang="en">A long, dusty, black, whip-like structure emerge from the terminal bud of the stalk. The whip is initially covered by a thin silvery membrane which ruptures to release millions of black powdery spores carried by the wind.</span>
+                    <span lang="hi">गन्ने की शीर्ष कली से एक लंबी, कोड़े जैसी संरचना (black whip) निकलती है, जो शुरू में एक पतली सफेद झिल्ली से ढकी होती है, बाद में फटकर कोयले जैसी काली धूल (बीजाणु) छोड़ती है।</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-card-title">🔍 <span lang="te" class="telugu">తెగులు కారకం & తీవ్రత</span><span lang="en">Causes</span><span lang="hi">कारण</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">స్పోరిసోరియం స్కిటామినమ్ (Sporisorium scitamineum) అనే శిలీంధ్రం వల్ల వస్తుంది. సోకిన విత్తన చెరకు వాడకం, గాల్లో కొట్టుకువచ్చే సిద్ధబీజాలు (spores) మరియు నిరంతరం అదే పొలంలో కార్శి తోటల (ratooning) సాగు దీనికి ప్రధాన కారణాలు.</span>
+                    <span lang="en">Caused by the fungus Sporisorium scitamineum. Spread predominantly by wind-borne spores, planting infected seed setts, and continuous ratoon cropping without sanitizing the fields.</span>
+                    <span lang="hi">स्पोरिसोरियम सिटामिनियम नामक कवक के कारण होता है। हवा द्वारा उड़ने वाले बीजाणु, संक्रमित बीज सेटों का उपयोग और लगातार पेड़ी (ratooning) की फसल लेना इसके प्रमुख कारण हैं।</span>
+                  </div>
+                </div>
+                <div class="detail-card organic">
+                  <div class="detail-card-title">🍃 <span lang="te" class="telugu">సేంద్రీయ నివారణ చర్యలు</span><span lang="en">Organic Treatments</span><span lang="hi">जैविक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. కాటుక కొరడాలు విప్పారక ముందే ఒక సంచిని దానిపై కప్పి జాగ్రత్తగా కత్తిరించి పొలానికి దూరంగా కాల్చివేయాలి.<br>2. విత్తన గడలను వేడి నీటి ప్రక్రియ (52°C వద్ద 30 నిమిషాలు) లేదా ఆవిరి ప్రక్రియ ద్వారా శుద్ధి చేయాలి.<br>3. కార్శి పంట వేయకుండా పంట మార్పిడి చేయాలి.</span>
+                    <span lang="en">1. Cover the black whips with a plastic bag before they rupture, cut them off carefully from the base, and burn them outside the field.<br>2. Subject seed setts to hot water treatment (52°C for 30 minutes) before planting to eliminate internal mycelium.<br>3. Avoid continuous ratooning in infected fields.</span>
+                    <span lang="hi">1. कोड़े जैसी काली संरचनाओं को फटने से पहले थैली से ढककर सावधानी से काटें और खेत से दूर जला दें।<br>2. रोपण से पहले बीज सेटों का गर्म पानी से उपचार (52 डिग्री सेल्सियस पर 30 मिनट) करें।<br>3. संक्रमित खेतों में पेड़ी की फसल न लें।</span>
+                  </div>
+                </div>
+                <div class="detail-card chemical">
+                  <div class="detail-card-title">🧪 <span lang="te" class="telugu">రసాయన నివారణ చర్యలు</span><span lang="en">Chemical Options</span><span lang="hi">रासायनिक उपचार</span></div>
+                  <div class="detail-card-content">
+                    <span lang="te" class="telugu">1. నాటడానికి ముందు విత్తన కనుపులను 0.1% ప్రాపికోనజోల్ (Propiconazole 25% EC - లీటరు నీటికి 1 మి.లీ) లేదా కార్బెండజిమ్ (Carbendazim 50% WP) ద్రావణంలో 15 నిమిషాలు నానబెట్టి నాటాలి.</span>
+                    <span lang="en">1. Protect seed setts before planting by soaking them in a 0.1% Propiconazole solution (1ml per liter of water) or 0.1% Triadimefon solution for 15 minutes.</span>
+                    <span lang="hi">1. बचाव के लिए बीज सेटों को रोपण से पहले 0.1% प्रोपिकोनाज़ोल (1 मिली प्रति लीटर पानी) घोल में 15 मिनट तक भिगोएँ।</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo display" style="margin-bottom: 16px; display: inline-flex;">
+            <span class="text-green">🌾</span> 
+            <span lang="te" class="telugu">రైతుబాడి</span>
+            <span lang="en">RaituBadi</span>
+            <span lang="hi">रैतुబాड़ी</span>
+          </a>
+          <p class="ui" style="color: var(--text-muted); font-size: 14px; max-width: 320px; line-height: 1.6;">
+            <span lang="te" class="telugu">నెల్లూరు మరియు గుంటూరుకు చెందిన ఒక రైతు కొడుకు ద్వారా భారతీయ రైతుల కోసం రూపొందించబడింది. ప్రతి రైతుకు సాంకేతికతను మరియు విలువైన సమాచారాన్ని అందించడమే మా లక్ష్యం.</span>
+            <span lang="en">Built by a farmer's son from Nellore & Guntur, for Indian farmers. Our mission is to bring technology and valuable knowledge to every farmer.</span>
+            <span lang="hi">नेल्लोर और गुंटूर के एक किसान के बेटे द्वारा भारतीय किसानों के लिए बनाया गया। हमारा लक्ष्य हर किसान तक तकनीक और बहुमूल्य जानकारी पहुंचाना है।</span>
+          </p>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">త్వరిత లింకులు</span>
+            <span lang="en">Quick Links</span>
+            <span lang="hi">त्वरित लिंक</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="index.html"><span lang="te" class="telugu">హోమ్</span><span lang="en">Home</span><span lang="hi">होम</span></a></li>
+            <li><a href="analyzer.html"><span lang="te" class="telugu">పంటల ఎనలైజర్</span><span lang="en">AI Analyzer</span><span lang="hi">एआई विश्леषक</span></a></li>
+            <li><a href="encyclopedia.html"><span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span><span lang="en">Encyclopedia</span><span lang="hi">ज्ञानकोश</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">వేదిక</span>
+            <span lang="en">Platform</span>
+            <span lang="hi">प्लेटफ़ॉर्म</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="features.html"><span lang="te" class="telugu">ఫీచర్లు</span><span lang="en">Features</span><span lang="hi">सुविधाएं</span></a></li>
+            <li><a href="about.html"><span lang="te" class="telugu">మా కథ</span><span lang="en">Our Story</span><span lang="hi">हमारी कहानी</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">సంప్రదించండి</span>
+            <span lang="en">Connect</span>
+            <span lang="hi">संपर्क करें</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="https://wa.me/919999999999" target="_blank"><span lang="te" class="telugu">వాట్సాప్ సహాయం</span><span lang="en">WhatsApp Support</span><span lang="hi">व्हाट्सएप सहायता</span></a></li>
+            <li><a href="mailto:support@raithubadi.org"><span lang="te" class="telugu">ఇమెయిల్ మద్దతు</span><span lang="en">Email Support</span><span lang="hi">ईमेल सहायता</span></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom mono">
+        <p>&copy; 2026 Raithubadi AI. All rights reserved.</p>
+        <p>Made with ❤️ in Nellore & Guntur, AP, India.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── LANGUAGE SWITCHER LOGIC ──
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    function setLanguage(lang) {
+      document.body.className = `lang-${lang}`;
+      localStorage.setItem('raithubadi_lang', lang);
+      
+      langBtns.forEach(btn => {
+        if(btn.dataset.lang === lang) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    // Initialize language from local storage or default to 'te'
+    const savedLang = localStorage.getItem('raithubadi_lang') || 'te';
+    setLanguage(savedLang);
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    // ── MOBILE MENU ──
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+    });
+
+    // Navbar Scroll Background Change
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ── ENCYCLOPEDIA INTERACTIVE LOGIC ──
+    let activeTab = 'crops';
+
+    function switchTab(tab) {
+      activeTab = tab;
+      
+      const tabCrops = document.getElementById('tabCrops');
+      const tabDiseases = document.getElementById('tabDiseases');
+      const cropsSection = document.getElementById('cropsSection');
+      const diseasesSection = document.getElementById('diseasesSection');
+
+      if (tab === 'crops') {
+        tabCrops.classList.add('active');
+        tabDiseases.classList.remove('active');
+        cropsSection.style.display = 'block';
+        diseasesSection.style.display = 'none';
+      } else {
+        tabCrops.classList.remove('active');
+        tabDiseases.classList.add('active');
+        cropsSection.style.display = 'none';
+        diseasesSection.style.display = 'block';
+      }
+      
+      applyFilters();
+    }
+
+    // Toggle disease accordions
+    function toggleAccordion(element) {
+      const accordion = element.parentElement;
+      const content = accordion.querySelector('.disease-content');
+      const allAccordions = document.querySelectorAll('.disease-accordion');
+      
+      // Close other accordions
+      allAccordions.forEach(item => {
+        if (item !== accordion && item.classList.contains('active')) {
+          item.classList.remove('active');
+          item.querySelector('.disease-content').style.maxHeight = null;
+        }
+      });
+
+      // Toggle current accordion
+      if (accordion.classList.contains('active')) {
+        accordion.classList.remove('active');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    }
+
+    // Filter controls
+    const searchBar = document.getElementById('searchBar');
+    const cropSelect = document.getElementById('cropSelect');
+    const typeSelect = document.getElementById('typeSelect');
+    const noResults = document.getElementById('noResults');
+
+    searchBar.addEventListener('input', applyFilters);
+    cropSelect.addEventListener('change', applyFilters);
+    typeSelect.addEventListener('change', applyFilters);
+
+    function applyFilters() {
+      const query = searchBar.value.toLowerCase().trim();
+      const selectedCrop = cropSelect.value;
+      const selectedType = typeSelect.value;
+
+      let visibleCount = 0;
+
+      if (activeTab === 'crops') {
+        const cropCards = document.querySelectorAll('.crop-card');
+        
+        cropCards.forEach(card => {
+          const cropId = card.getAttribute('data-crop');
+          
+          // Match crop filter
+          const matchesCrop = (selectedCrop === 'all' || cropId === selectedCrop);
+          
+          // Match search query
+          const titleTE = card.querySelector('.crop-card-title [lang="te"]').textContent.toLowerCase();
+          const titleEN = card.querySelector('.crop-card-title [lang="en"]').textContent.toLowerCase();
+          const titleHI = card.querySelector('.crop-card-title [lang="hi"]').textContent.toLowerCase();
+          const descTE = card.querySelector('.crop-card-desc [lang="te"]').textContent.toLowerCase();
+          const descEN = card.querySelector('.crop-card-desc [lang="en"]').textContent.toLowerCase();
+          const descHI = card.querySelector('.crop-card-desc [lang="hi"]').textContent.toLowerCase();
+          
+          const matchesSearch = query === '' || 
+                                titleTE.includes(query) || 
+                                titleEN.includes(query) || 
+                                titleHI.includes(query) || 
+                                descTE.includes(query) || 
+                                descEN.includes(query) || 
+                                descHI.includes(query);
+
+          if (matchesCrop && matchesSearch) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+      } else {
+        const diseaseCards = document.querySelectorAll('.disease-accordion');
+        
+        diseaseCards.forEach(accordion => {
+          const cropId = accordion.getAttribute('data-crop');
+          const searchMeta = accordion.getAttribute('data-search').toLowerCase();
+          
+          // Match crop filter
+          const matchesCrop = (selectedCrop === 'all' || cropId === selectedCrop);
+          
+          // Match search query
+          const contentInner = accordion.querySelector('.disease-content-inner');
+          const textContent = contentInner ? contentInner.textContent.toLowerCase() : '';
+          const headerText = accordion.querySelector('.disease-title').textContent.toLowerCase();
+          
+          const matchesSearch = query === '' || 
+                                searchMeta.includes(query) ||
+                                headerText.includes(query) || 
+                                textContent.includes(query);
+
+          // Match treatment type filter (organic vs chemical)
+          // Hide or show parts of the card or the whole card
+          const organicCard = accordion.querySelector('.detail-card.organic');
+          const chemicalCard = accordion.querySelector('.detail-card.chemical');
+          
+          let matchesType = true;
+          if (selectedType === 'organic') {
+            if (organicCard) organicCard.style.display = 'block';
+            if (chemicalCard) chemicalCard.style.display = 'none';
+          } else if (selectedType === 'chemical') {
+            if (organicCard) organicCard.style.display = 'none';
+            if (chemicalCard) chemicalCard.style.display = 'block';
+          } else {
+            if (organicCard) organicCard.style.display = 'block';
+            if (chemicalCard) chemicalCard.style.display = 'block';
+          }
+
+          if (matchesCrop && matchesSearch) {
+            accordion.style.display = 'block';
+            visibleCount++;
+          } else {
+            accordion.style.display = 'none';
+            // Collapse if hidden
+            if (accordion.classList.contains('active')) {
+              accordion.classList.remove('active');
+              accordion.querySelector('.disease-content').style.maxHeight = null;
+            }
+          }
+        });
+      }
+
+      // Show/hide no results
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
+    }
+
+    // Click on crop card to filter diseases
+    function filterByCropCard(cropId) {
+      cropSelect.value = cropId;
+      switchTab('diseases');
+      
+      // Smooth scroll to control area
+      document.querySelector('.search-filter-card').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

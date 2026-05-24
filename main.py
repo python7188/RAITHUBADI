@@ -12,7 +12,7 @@ from typing import Optional
 import httpx
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import PlainTextResponse, JSONResponse, HTMLResponse
+from fastapi.responses import PlainTextResponse, JSONResponse, HTMLResponse, FileResponse
 from pydantic import BaseModel
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client as Twilio
@@ -740,6 +740,12 @@ async def whatsapp(request: Request):
     return PlainTextResponse(str(twiml), media_type="text/xml")
 
 # ─────────────────────────────────────────────────────────────────────────────
+@app.get("/agricultural_hero.png")
+async def get_hero_image():
+    if os.path.exists("agricultural_hero.png"):
+        return FileResponse("agricultural_hero.png")
+    return JSONResponse(status_code=404, content={"error": "Not found"})
+
 # HEALTH CHECK
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -763,6 +769,12 @@ async def status():
         "total_scans":    scans,
         "features":       ["F0","F1","F2","F3","F4","F5","F6","F7","F9"],
     }
+
+@app.get("/{page}.html", response_class=HTMLResponse)
+async def serve_page(page: str):
+    if os.path.exists(f"{page}.html"):
+        return FileResponse(f"{page}.html")
+    return HTMLResponse(status_code=404, content="<h1>Not Found</h1>")
 
 @app.get("/", response_class=HTMLResponse)
 async def root():

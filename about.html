@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>రైతుబాడి - మా కథ | Raithubadi - Our Story</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ── BASE & VARIABLES ── */
+    :root {
+      /* Backgrounds - Organic crop forest green and layered depth */
+      --bg-base: #0C130A;
+      --bg-surface: rgba(20, 30, 16, 0.75);
+      --bg-card: rgba(20, 30, 16, 0.75);
+      --bg-overlay: rgba(12, 19, 10, 0.85);
+
+      /* Accent colors */
+      --gold: #E4A834;
+      --green: #3EBE67;
+      --green-highlight: #4ADE80;
+      
+      /* Borders - premium farmer heart & soil glass outlines */
+      --border-gold: rgba(228, 168, 52, 0.28);
+      --border-green: rgba(62, 190, 103, 0.25);
+      --border-glass: rgba(255, 255, 255, 0.08);
+
+      /* Typography */
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-dark: #111827;
+      
+      --nav-height: 72px;
+      --container-width: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.lang-te {
+      font-family: 'Noto Sans Telugu', 'Inter', sans-serif;
+    }
+
+    /* Backdrop Styling */
+    .page-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=90&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+    
+    .backdrop-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(12, 19, 10, 0.9) 0%, var(--bg-base) 100%);
+      z-index: -1;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .display { font-family: 'Outfit', 'Noto Sans Telugu', sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+    .ui { font-family: 'Inter', sans-serif; }
+    .telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+    .mono { font-family: 'Fira Code', monospace; }
+    
+    h1, h2, h3, h4, h5, h6 { color: white; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── MULTILINGUAL LOGIC ── */
+    [lang="en"], [lang="hi"] { display: none; }
+    body.lang-en [lang="en"] { display: inline-block; }
+    body.lang-en [lang="te"], body.lang-en [lang="hi"] { display: none; }
+    body.lang-hi [lang="hi"] { display: inline-block; }
+    body.lang-hi [lang="te"], body.lang-hi [lang="en"] { display: none; }
+    body.lang-te [lang="te"] { display: inline-block; }
+    
+    /* Force block display for certain elements */
+    body.lang-en p[lang="en"], body.lang-en h1[lang="en"], body.lang-en h2[lang="en"], body.lang-en h3[lang="en"], body.lang-en div[lang="en"] { display: block; }
+    body.lang-hi p[lang="hi"], body.lang-hi h1[lang="hi"], body.lang-hi h2[lang="hi"], body.lang-hi h3[lang="hi"], body.lang-hi div[lang="hi"] { display: block; }
+    body.lang-te p[lang="te"], body.lang-te h1[lang="te"], body.lang-te h2[lang="te"], body.lang-te h3[lang="te"], body.lang-te div[lang="te"] { display: block; }
+
+    /* ── UTILITIES ── */
+    .glass-panel {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green-highlight);
+      box-shadow: 0 12px 40px rgba(62, 190, 103, 0.15);
+    }
+    
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .text-gold { color: var(--gold); }
+    .text-green { color: var(--green-highlight); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--green-highlight);
+      color: var(--text-dark);
+      box-shadow: 0 4px 14px rgba(74, 222, 128, 0.3);
+    }
+    .btn-primary:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 222, 128, 0.45);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-gold);
+    }
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--green-highlight);
+      transform: translateY(-2px);
+    }
+
+    /* ── NAVIGATION ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .logo {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      position: relative;
+      padding: 4px 0;
+    }
+    .nav-link:hover { color: var(--text-main); }
+    .nav-link.active {
+      color: var(--gold);
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    
+    .lang-switcher {
+      display: flex;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 2px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 18px;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--bg-base);
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+    }
+    .hero-content {
+      max-width: 900px;
+      padding: 2rem;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    /* ── EDITORIAL GRID ── */
+    .section {
+      padding: 7rem 0;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .editorial-grid.reverse {
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .text-content p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      line-height: 1.85;
+    }
+    .text-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-box {
+      height: 100%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      border-color: var(--border-gold);
+      position: relative;
+    }
+    .highlight-box::before {
+      content: '“';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 8rem;
+      color: rgba(228, 168, 52, 0.08);
+      font-family: serif;
+      line-height: 1;
+    }
+    .highlight-box h3 {
+      font-size: 1.6rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NUMBERS STRIP ── */
+    .numbers-strip {
+      padding: 5rem 0;
+      background: rgba(20, 30, 16, 0.85);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      backdrop-filter: blur(12px);
+    }
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .number-item h3 {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+    .number-item p {
+      color: var(--text-main);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+    }
+
+    /* ── MANIFESTO ── */
+    .manifesto-box {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      text-align: center;
+      border-color: var(--border-gold);
+    }
+    .manifesto-p-large {
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 500;
+      color: white;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .manifesto-p-muted {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .manifesto-badge {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin: 0 auto;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold) 0%, rgba(62, 190, 103, 0.2) 100%);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 4rem;
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 4px solid var(--bg-base);
+      box-shadow: 0 0 0 2px var(--border-gold);
+      transition: background-color 0.3s ease;
+    }
+    .timeline-item:hover::before {
+      background: var(--green-highlight);
+    }
+    .timeline-item h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .timeline-item p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* ── STACK SECTION ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 2rem;
+    }
+    .stack-card h4 {
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 8rem 0;
+      text-align: center;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(20, 30, 16, 0.9), rgba(12, 19, 10, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 5rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .cta-box h2 {
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+    }
+    .cta-box p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060A05;
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-glass);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+    .footer-col h4 {
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE (Burger menu & scaling) ── */
+    @media (max-width: 992px) {
+      .editorial-grid, .editorial-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .editorial-grid.reverse {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .stack-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .numbers-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .manifesto-box {
+        padding: 3rem 2rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="lang-te">
+
+  <!-- Fixed Backdrop System -->
+  <div class="page-backdrop"></div>
+  <div class="backdrop-overlay"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="navbar glass-panel">
+    <div class="container nav-container">
+      <a href="index.html" class="logo display">
+        <span class="text-green">🌾</span> 
+        <span lang="te" class="telugu">రైతుబాడి</span>
+        <span lang="en">RaituBadi</span>
+        <span lang="hi">रैतुबाड़ी</span>
+      </a>
+      
+      <div class="nav-links ui">
+        <a href="index.html" class="nav-link">
+          <span lang="te" class="telugu">హోమ్</span>
+          <span lang="en">Home</span>
+          <span lang="hi">होम</span>
+        </a>
+        <a href="analyzer.html" class="nav-link">
+          <span lang="te" class="telugu">పంటల ఎనలైజర్</span>
+          <span lang="en">AI Analyzer</span>
+          <span lang="hi">एआई विश्लेषक</span>
+        </a>
+        <a href="encyclopedia.html" class="nav-link">
+          <span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span>
+          <span lang="en">Encyclopedia</span>
+          <span lang="hi">फसल ज्ञानकोश</span>
+        </a>
+        <a href="features.html" class="nav-link">
+          <span lang="te" class="telugu">ఫీచర్లు</span>
+          <span lang="en">Features</span>
+          <span lang="hi">सुविधाएं</span>
+        </a>
+        <a href="about.html" class="nav-link active">
+          <span lang="te" class="telugu">రైతుల గుండె చప్పుడు</span>
+          <span lang="en">Our Story</span>
+          <span lang="hi">हमारी कहानी</span>
+        </a>
+      </div>
+
+      <div class="nav-actions" style="display: flex; gap: 16px; align-items: center;">
+        <div class="lang-switcher mono">
+          <button class="lang-btn" data-lang="te">TE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">HI</button>
+        </div>
+        <button class="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ── -->
+  <section class="hero reveal">
+    <div class="hero-content">
+      <h1 class="display">
+        <span lang="te" class="telugu">మట్టి నుండి పుట్టిన సాంకేతికత.<br><span class="text-gold">ఒక రైతు బిడ్డ సంకల్పం.</span></span>
+        <span lang="en">Technology born from soil.<br><span class="text-gold">Built by a farmer's son.</span></span>
+        <span lang="hi">मिट्टी से जन्मी तकनीक।<br><span class="text-gold">एक किसान के बेटे का संकल्प।</span></span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── SECTION 1: THE MOMENT ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reveal">
+        <div class="text-content">
+          <h2 class="section-title text-green display">
+            <span lang="te" class="telugu">ఆ క్షణం</span>
+            <span lang="en">The Moment</span>
+            <span lang="hi">वह पल</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">ఇది పొలాల్లో ప్రారంభమైంది. అంతులేని కష్టానికి తగిన ప్రతిఫలం దక్కకపోవడాన్ని చూసి ఒక విషయం స్పష్టమైంది: వ్యవస్థ ప్రాథమికంగా విఫలమైంది.</span>
+            <span lang="en">It began in the fields. Watching the endless cycle of hard labor met with inadequate compensation made one thing clear: the system was fundamentally broken.</span>
+            <span lang="hi">यह खेतों में शुरू हुआ। बिना उचित फल के अंतहीन कठिन परिश्रम के चक्र को देखना एक बात स्पष्ट करता था: व्यवस्था मौलिक रूप से टूटी हुई थी।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">దళారులు లాభాలను నియంత్రిస్తున్నారు, అయితే నిజమైన విలువ సృష్టికర్తలు—రైతులు—మనుగడ కోసం పోరాడుతున్నారు. ఆధునిక సాంకేతిక పరిజ్ఞానం ఈ విధ్వంసకర అంతరాన్ని పూడ్చగలదని మరియు పూడ్చాలని మాకు తెలుసు.</span>
+            <span lang="en">Middlemen controlled the margins, while the true creators of value—the farmers—were left fighting for survival. We knew that modern technology could, and should, bridge this devastating gap.</span>
+            <span lang="hi">बिचौलिये मुनाफे को नियंत्रित करते थे, जबकि मूल्य के वास्तविक निर्माता—किसान—जीवित रहने के लिए संघर्ष कर रहे थे। हम जानते थे कि आधुनिक तकनीक इस विनाशकारी अंतर को पाट सकती है और पाटनी चाहिए।</span>
+          </p>
+        </div>
+        <div class="glass-card highlight-box">
+          <h3 class="display">
+            <span lang="te" class="telugu">మట్టిలో పాతుకుపోయిన ఒక దృష్టి,<br><span class="text-gold">భవిష్యత్తు కోసం రూపొందించబడింది.</span></span>
+            <span lang="en">A vision rooted in the soil,<br><span class="text-gold">engineered for the future.</span></span>
+            <span lang="hi">मिट्टी से जुड़ी एक दृष्टि,<br><span class="text-gold">भविष्य के लिए निर्मित।</span></span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: THE MISSION ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reverse reveal">
+        <div class="glass-card highlight-box">
+          <h3 class="display">
+            <span lang="te" class="telugu">వికేంద్రీకృత సాంకేతికత ద్వారా<br><span class="text-green">రైతులకు నిజమైన సాధికారత.</span></span>
+            <span lang="en">True empowerment through<br><span class="text-green">decentralized technology.</span></span>
+            <span lang="hi">विकेंद्रीकृत तकनीक के माध्यम से<br><span class="text-green">किसानों का वास्तविक सशक्तिकरण।</span></span>
+          </h3>
+        </div>
+        <div class="text-content">
+          <h2 class="section-title text-gold display">
+            <span lang="te" class="telugu">మా లక్ష్యం</span>
+            <span lang="en">The Mission</span>
+            <span lang="hi">हमारा मिशन</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">మన దేశానికి ఆహారం అందించే వారి చేతుల్లోకి తిరిగి నియంత్రణను తీసుకురావడానికి రైతుబడి ఉనికిలో ఉంది. రైతులు మార్కెట్లు, సమానమైన ధరలు మరియు చర్య తీసుకోదగిన డేటాకు ప్రత్యక్ష ప్రాప్యతను కలిగి ఉండే పారదర్శక పర్యావరణ వ్యవస్థను మేము నిర్మిస్తున్నాము.</span>
+            <span lang="en">Raithubadi exists to put control back into the hands of those who feed our nation. We are architecting a transparent ecosystem where farmers have direct access to markets, equitable pricing, and actionable data.</span>
+            <span lang="hi">रैतुबाडी का उद्देश्य उन लोगों के हाथों में नियंत्रण वापस सौंपना है जो हमारे देश का पेट भरते हैं। हम एक पारदर्शी पारिस्थितिकी तंत्र का निर्माण कर रहे हैं जहाँ किसानों को सीधे बाज़ारों, उचित मूल्य निर्धारण और उपयोगी डेटा तक पहुँच प्राप्त हो।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">అనవసరమైన మధ్యవర్తులను తొలగించడం ద్వారా, మేము వ్యవసాయ లాభదాయకతను పెంచుతున్నాము మరియు వచ్చే తరం రైతులకు స్థిరమైన భవిష్యత్తును అందిస్తున్నాము.</span>
+            <span lang="en">By removing unnecessary intermediaries, we are maximizing agricultural profitability and ensuring a sustainable future for the next generation of farmers.</span>
+            <span lang="hi">अनावश्यक बिचौलियों को हटाकर, हम कृषि मुनाफे को अधिकतम कर रहे हैं और किसानों की अगली पीढ़ी के लिए एक स्थायी भविष्य सुनिश्चित कर रहे हैं।</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: THE NUMBERS ── -->
+  <section class="numbers-strip reveal">
+    <div class="container">
+      <div class="numbers-grid">
+        <div class="number-item">
+          <h3>0%</h3>
+          <p>
+            <span lang="te" class="telugu">దళారీ ఫీజులు</span>
+            <span lang="en">Middleman Fees</span>
+            <span lang="hi">बिचौलिया शुल्क</span>
+          </p>
+        </div>
+        <div class="number-item">
+          <h3>100%</h3>
+          <p>
+            <span lang="te" class="telugu">ధర పారదర్శకత</span>
+            <span lang="en">Price Transparency</span>
+            <span lang="hi">मूल्य पारदर्शिता</span>
+          </p>
+        </div>
+        <div class="number-item">
+          <h3>24/7</h3>
+          <p>
+            <span lang="te" class="telugu">ప్రత్యక్ష మార్కెట్ యాక్సెస్</span>
+            <span lang="en">Direct Market Access</span>
+            <span lang="hi">सीधा बाज़ार प्रवेश</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: THE MANIFESTO ── -->
+  <section class="section">
+    <div class="container">
+      <div class="glass-card manifesto-box reveal">
+        <h2 class="section-title text-green display" style="margin-bottom: 2.5rem;">
+          <span lang="te" class="telugu">రైతుల గుండె చప్పుడు - మా మేనిఫెస్టో</span>
+          <span lang="en">The Manifesto</span>
+          <span lang="hi">हमारा घोषणापत्र</span>
+        </h2>
+        <p class="manifesto-p-large">
+          <span lang="te" class="telugu">వ్యవసాయం కేవలం ఒక వృత్తి మాత్రమే కాదు అని మేము నమ్ముతున్నాము; ఇది మన నాగరికతకు ప్రాథమిక వెన్నెముక.</span>
+          <span lang="en">We believe farming is not just an occupation; it is the fundamental backbone of our civilization.</span>
+          <span lang="hi">हमारा मानना है कि खेती केवल एक पेशा नहीं है; यह हमारी सभ्यता की बुनियादी रीढ़ है।</span>
+        </p>
+        <p class="manifesto-p-muted">
+          <span lang="te" class="telugu">రైతులు ఎల్లప్పుడూ వెనుకబడి ఉండాలనే కాలం చెల్లిన నమ్మకాన్ని మేము వ్యతిరేకిస్తున్నాము. వ్యవసాయ నియమాలను తిరిగి వ్రాయడానికి మేము ఓపెన్ టెక్నాలజీ, ప్రత్యక్ష వాణిజ్యం మరియు కమ్యూనిటీ-ఆధారిత నెట్‌వర్క్‌లను స్వీకరిస్తాము.</span>
+          <span lang="en">We reject the outdated premise that farmers must remain marginalized. We embrace open technology, direct commerce, and community-driven networks to rewrite the rules of agriculture.</span>
+          <span lang="hi">हम इस पुरानी धारणा को खारिज करते हैं कि किसानों को हमेशा हाशिये पर ही रहना चाहिए। हम कृषि के नियमों को फिर से लिखने के लिए खुली तकनीक, सीधे वाणिज्य और समुदाय-संचालित नेटवर्क को अपनाते हैं।</span>
+        </p>
+        <div class="manifesto-badge">
+          <span lang="te" class="telugu">మా కోడ్, రైతు సంక్షేమం కోసం మా నిబద్ధత.</span>
+          <span lang="en">Our code is our commitment to a fairer agricultural economy.</span>
+          <span lang="hi">हमारा कोड, किसान कल्याण के प्रति हमारी अटूट प्रतिबद्धता है।</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: THE STACK ── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title text-gold display text-center" style="margin-bottom: 3rem;">
+        <span lang="te" class="telugu">సాంకేతిక పరిజ్ఞానం (The Stack)</span>
+        <span lang="en">The Technology Stack</span>
+        <span lang="hi">तकनीकी ढांचा</span>
+      </h2>
+      <div class="stack-grid reveal">
+        <div class="glass-card stack-card">
+          <h4 class="display">
+            <span lang="te" class="telugu">ఫ్రంట్-ఎండ్ ఇంటర్‌ఫేస్</span>
+            <span lang="en">Frontend Interface</span>
+            <span lang="hi">फ्रंटएंड इंटरफ़ेस</span>
+          </h4>
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7;">
+            <span lang="te" class="telugu">ఆధునిక గ్లాస్మార్ఫిజం వెబ్ ప్రమాణాలను ఉపయోగించుకునే అల్ట్రా-ఫాస్ట్, రెస్పాన్సివ్ UI. ఇది స్పాటీ కనెక్టివిటీ ఉన్న తక్కువ-ఎండ్ మొబైల్ పరికరాల్లో కూడా అతుకులు లేని, సులభమైన అనుభవాన్ని అందిస్తుంది.</span>
+            <span lang="en">An ultra-fast, responsive UI leveraging modern glassmorphism web standards. It ensures a seamless, native-like experience even on lower-end devices with spotty connectivity.</span>
+            <span lang="hi">आधुनिक ग्लासमोर्फिज़्म वेब मानकों का उपयोग करने वाला एक अत्यंत तेज़, उत्तरदायी यूआई। यह कमजोर कनेक्टिविटी वाले कम-एंड मोबाइल उपकरणों पर भी एक सहज, सहज अनुभव सुनिश्चित करता है।</span>
+          </p>
+        </div>
+        <div class="glass-card stack-card">
+          <h4 class="display">
+            <span lang="te" class="telugu">బ్యాక్-ఎండ్ మౌలిక సదుపాయాలు</span>
+            <span lang="en">Backend Infrastructure</span>
+            <span lang="hi">बैकएंड इन्फ्रास्ट्रक्चर</span>
+          </h4>
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7;">
+            <span lang="te" class="telugu">రియల్ టైమ్ మార్కెట్ సమాచారాన్ని ప్రాసెస్ చేయడానికి, సురక్షితమైన లావాదేవీలను సులభతరం చేయడానికి మరియు బలమైన వినియోగదారు నిర్వహణ వ్యవస్థలను నిర్వహించడానికి రూపొందించబడిన అత్యంత స్కేలబుల్ క్లౌడ్ ఆర్కిటెక్చర్.</span>
+            <span lang="en">A highly scalable cloud architecture engineered to process real-time market data, facilitate secure transactions, and maintain robust user management systems.</span>
+            <span lang="hi">वास्तविक समय के बाजार डेटा कोसंसाधित करने, सुरक्षित लेनदेन की सुविधा प्रदान करने और मजबूत उपयोगकर्ता प्रबंधन प्रणाली बनाए रखने के लिए डिज़ाइन किया गया एक अत्यधिक स्केलेबल क्लाउड आर्किटेक्चर।</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 6: WHAT'S NEXT TIMELINE ── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title text-green display text-center" style="margin-bottom: 4rem;">
+        <span lang="te" class="telugu">భవిష్యత్తు కార్యాచరణ</span>
+        <span lang="en">What's Next</span>
+        <span lang="hi">आगे की योजना</span>
+      </h2>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <h4 class="display">
+            <span lang="te" class="telugu">దశ 1: పునాది</span>
+            <span lang="en">Phase 1: Foundation</span>
+            <span lang="hi">चरण 1: आधारशिला</span>
+          </h4>
+          <p>
+            <span lang="te" class="telugu">ధృవీకరించబడిన రైతులు మరియు సంస్థాగత కొనుగోలుదారుల మధ్య ప్రత్యక్ష, దళారీ రహిత కనెక్టివిటీని ఏర్పాటు చేసే కోర్ ప్లాట్‌ఫారమ్ ప్రారంభం.</span>
+            <span lang="en">Deployment of the core platform establishing direct, unmediated connectivity between verified farmers and institutional buyers.</span>
+            <span lang="hi">सत्यापित किसानों और संस्थागत खरीदारों के बीच सीधे, बिना बिचौलियों के संपर्क स्थापित करने वाले मुख्य मंच की शुरुआत।</span>
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h4 class="display">
+            <span lang="te" class="telugu">దశ 2: విస్తరణ</span>
+            <span lang="en">Phase 2: Scale</span>
+            <span lang="hi">चरण 2: विस्तार</span>
+          </h4>
+          <p>
+            <span lang="te" class="telugu">సమగ్ర ప్రాంతీయ భాషా మద్దతు, స్థానిక రవాణా (లాజిస్టిక్స్) భాగస్వాములతో లోతైన అనుసంధానం మరియు AI-ఆధారిత రియల్-టైమ్ ధరల విశ్లేషణ.</span>
+            <span lang="en">Rollout of comprehensive regional language support, deep integration with local logistics partners, and AI-driven real-time pricing intelligence.</span>
+            <span lang="hi">व्यापक क्षेत्रीय भाषा समर्थन, स्थानीय रसद भागीदारों के साथ गहरा एकीकरण, और एआई-संचालित वास्तविक समय मूल्य निर्धारण विश्लेषण की शुरुआत।</span>
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h4 class="display">
+            <span lang="te" class="telugu">దశ 3: పర్యావరణ వ్యవస్థ</span>
+            <span lang="en">Phase 3: Ecosystem</span>
+            <span lang="hi">चरण 3: पारिस्थितिकी तंत्र</span>
+          </h4>
+          <p>
+            <span lang="te" class="telugu">సులభమైన మైక్రో-లెండింగ్ (చిన్న రుణాలు) మరియు డైనమిక్ పంట భీమా ఉత్పత్తులతో సహా అనుకూలమైన వ్యవసాయ ఆర్థిక సేవల విస్తరణ.</span>
+            <span lang="en">Expansion into tailored agricultural financial services, including accessible micro-lending and dynamic crop insurance products.</span>
+            <span lang="hi">सुलभ सूक्ष्म-ऋण और गतिशील फसल बीमा उत्पादों सहित अनुकूलित कृषि वित्तीय सेवाओं में विस्तार।</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 7: CTA ── -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2 class="display">
+          <span lang="te" class="telugu">ఉద్యమంలో భాగస్వామ్యం కండి</span>
+          <span lang="en">Join the Movement</span>
+          <span lang="hi">आंदोलन में शामिल हों</span>
+        </h2>
+        <p class="ui">
+          <span lang="te" class="telugu">వ్యవసాయ రంగాన్ని పునర్నిర్వచించే సాంకేతిక విప్లవంలో భాగస్వాములు కండి.</span>
+          <span lang="en">Be a part of the technological revolution redefining agriculture.</span>
+          <span lang="hi">कृषि क्षेत्र को पुनर्परिभाषित करने वाली तकनीकी क्रांति का हिस्सा बनें।</span>
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/919999999999" target="_blank" class="btn btn-primary">
+            <span lang="te" class="telugu">వాట్సాప్ ద్వారా మమ్మల్ని సంప్రదించండి</span>
+            <span lang="en">Contact via WhatsApp</span>
+            <span lang="hi">व्हाट्सएप पर हमसे जुड़ें</span>
+          </a>
+          <a href="mailto:support@raithubadi.com" class="btn btn-ghost">
+            <span lang="te" class="telugu">ఇమెయిల్ పంపండి</span>
+            <span lang="en">Send an Email</span>
+            <span lang="hi">ईमेल भेजें</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo display" style="margin-bottom: 16px; display: inline-flex; color: white;">
+            <span class="text-green">🌾</span> 
+            <span lang="te" class="telugu">రైతుబాడి</span>
+            <span lang="en">RaituBadi</span>
+            <span lang="hi">रैतुबाड़ी</span>
+          </a>
+          <p class="ui" style="color: var(--text-muted); font-size: 14px; max-width: 320px; line-height: 1.6;">
+            <span lang="te" class="telugu">నెల్లూరు మరియు గుంటూరుకు చెందిన ఒక రైతు కొడుకు ద్వారా భారతీయ రైతుల కోసం రూపొందించబడింది. ప్రతి రైతుకు సాంకేతికతను మరియు విలువైన సమాచారాన్ని అందించడమే మా లక్ష్యం.</span>
+            <span lang="en">Built by a farmer's son from Nellore & Guntur, for Indian farmers. Our mission is to bring technology and valuable knowledge to every farmer.</span>
+            <span lang="hi">नेल्लोर और गुंटूर के एक किसान के बेटे द्वारा भारतीय किसानों के लिए बनाया गया। हमारा लक्ष्य हर किसान तक तकनीक और बहुमूल्य जानकारी पहुंचाना है।</span>
+          </p>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">త్వరిత లింకులు</span>
+            <span lang="en">Quick Links</span>
+            <span lang="hi">त्वरित लिंक</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="index.html"><span lang="te" class="telugu">హోమ్</span><span lang="en">Home</span><span lang="hi">होम</span></a></li>
+            <li><a href="analyzer.html"><span lang="te" class="telugu">పంటల ఎనలైజర్</span><span lang="en">AI Analyzer</span><span lang="hi">एआई विश्लेषक</span></a></li>
+            <li><a href="encyclopedia.html"><span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span><span lang="en">Encyclopedia</span><span lang="hi">फसल ज्ञानकोश</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">ప్లాట్‌ఫారమ్</span>
+            <span lang="en">Platform</span>
+            <span lang="hi">प्लेटफ़ॉर्म</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="features.html"><span lang="te" class="telugu">ఫీచర్లు</span><span lang="en">Features</span><span lang="hi">सुविधाएं</span></a></li>
+            <li><a href="about.html"><span lang="te" class="telugu">రైతుల గుండె చప్పుడు</span><span lang="en">Our Story</span><span lang="hi">हमारी कहानी</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">కనెక్ట్ అవ్వండి</span>
+            <span lang="en">Connect</span>
+            <span lang="hi">जुड़ें</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="https://wa.me/919999999999" target="_blank"><span lang="te" class="telugu">వాట్సాప్ సహాయం</span><span lang="en">WhatsApp Support</span><span lang="hi">व्हाट्सएप सहायता</span></a></li>
+            <li><a href="mailto:support@raithubadi.org"><span lang="te" class="telugu">ఇమెయిల్ మద్దతు</span><span lang="en">Email Support</span><span lang="hi">ईमेल सहायता</span></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom mono">
+        <p>&copy; 2026 Raithubadi AI. All rights reserved.</p>
+        <p>Made with ❤️ in Nellore & Guntur, AP, India.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── LANGUAGE SWITCHER LOGIC ──
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    function setLanguage(lang) {
+      document.body.className = `lang-${lang}`;
+      localStorage.setItem('raithubadi_lang', lang);
+      
+      langBtns.forEach(btn => {
+        if(btn.dataset.lang === lang) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    // Initialize language from local storage or default to 'te'
+    const savedLang = localStorage.getItem('raithubadi_lang') || 'te';
+    setLanguage(savedLang);
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    // ── SCROLL REVEAL ANIMATION ──
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target); // Reveal only once
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // ── MOBILE MENU ──
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '72px';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'var(--bg-surface)';
+        navLinks.style.padding = '24px';
+        navLinks.style.borderBottom = '1px solid var(--border-glass)';
+      }
+    });
+  </script>
+</body>
+</html>

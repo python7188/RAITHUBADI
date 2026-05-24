@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>రైతుబాడి - ఫీచర్లు | RaituBadi - Features</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ── BASE & VARIABLES ── */
+    :root {
+      /* Backgrounds - Organic & Heart-warming Palette */
+      --bg-base: #0C130A; /* Deep crop forest green */
+      --bg-card: rgba(20, 30, 16, 0.75); /* Warm translucent olive forest green */
+      --bg-overlay: rgba(12, 19, 10, 0.88);
+      --bg-surface: rgba(15, 25, 12, 0.72);
+
+      /* Accent Borders */
+      --border-gold: rgba(228, 168, 52, 0.28); /* Gold wheat outlines */
+      --border-green: rgba(62, 190, 103, 0.25); /* Crop leaf green outlines */
+      --border-glass: rgba(255, 255, 255, 0.08);
+
+      /* Highlight Colors & Accents */
+      --gold: #E4A834; /* Wheat gold accent */
+      --green: #3EBE67; /* Lush green */
+      --green-light: #4ADE80; /* Bright growth green */
+      
+      /* Typography */
+      --text-main: #F3F4F6;
+      --text-muted: #A0ABA5; /* Warm translucent crop green/gray */
+      --text-dark: #0C130A;
+      
+      --nav-height: 72px;
+      --container-width: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.lang-te {
+      font-family: 'Noto Sans Telugu', 'Inter', sans-serif;
+    }
+
+    /* Backdrop Styling */
+    .page-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1623227866882-4b8f5ce4ead0?w=1920&q=90&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+    
+    .backdrop-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(12, 19, 10, 0.9) 0%, rgba(12, 19, 10, 0.85) 50%, #0C130A 100%);
+      z-index: -1;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .display { font-family: 'Outfit', 'Noto Sans Telugu', sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+    .ui { font-family: 'Inter', sans-serif; }
+    .telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+    .mono { font-family: 'Fira Code', monospace; }
+    
+    h1, h2, h3, h4, h5, h6 { color: white; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── MULTILINGUAL LOGIC ── */
+    [lang="en"], [lang="hi"] { display: none; }
+    body.lang-en [lang="en"] { display: inline-block; }
+    body.lang-en [lang="te"], body.lang-en [lang="hi"] { display: none; }
+    body.lang-hi [lang="hi"] { display: inline-block; }
+    body.lang-hi [lang="te"], body.lang-hi [lang="en"] { display: none; }
+    body.lang-te [lang="te"] { display: inline-block; }
+    
+    /* Force block display for certain elements */
+    body.lang-en p[lang="en"], body.lang-en h1[lang="en"], body.lang-en h2[lang="en"], body.lang-en h3[lang="en"], body.lang-en div[lang="en"], body.lang-en span[lang="en"] { display: block; }
+    body.lang-hi p[lang="hi"], body.lang-hi h1[lang="hi"], body.lang-hi h2[lang="hi"], body.lang-hi h3[lang="hi"], body.lang-hi div[lang="hi"], body.lang-hi span[lang="hi"] { display: block; }
+    body.lang-te p[lang="te"], body.lang-te h1[lang="te"], body.lang-te h2[lang="te"], body.lang-te h3[lang="te"], body.lang-te div[lang="te"], body.lang-te span[lang="te"] { display: block; }
+
+    /* ── UTILITIES ── */
+    .glass-panel {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green-light);
+      box-shadow: 0 12px 40px rgba(62, 190, 103, 0.18);
+    }
+    
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .text-gold { color: var(--gold); }
+    .text-green { color: var(--green-light); }
+    .text-center { text-align: center; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--text-dark);
+      box-shadow: 0 4px 14px rgba(228, 168, 52, 0.25);
+    }
+    .btn-primary:hover {
+      background: #f1b94e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(228, 168, 52, 0.4);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-gold);
+    }
+    .btn-ghost:hover {
+      background: rgba(228, 168, 52, 0.08);
+      border-color: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── NAVIGATION ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(12, 19, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .logo {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--gold);
+      border-radius: 2px;
+    }
+    
+    .lang-switcher {
+      display: flex;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 2px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 18px;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--bg-base);
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      position: relative;
+      height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+    }
+    .hero-content {
+      max-width: 900px;
+      padding: 2rem;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── EDITORIAL GRID (Left-Right Alternating Layout) ── */
+    .section {
+      padding: 8rem 0;
+    }
+    .section:nth-of-type(even) {
+      background: rgba(20, 30, 16, 0.25);
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      margin-bottom: 2rem;
+      line-height: 1.25;
+    }
+    
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .editorial-grid.reverse {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .text-content p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      line-height: 1.85;
+    }
+    .text-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .visual-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ── CUSTOM FEATURE VISUALS CSS ── */
+    
+    /* 1. WhatsApp Chat Mockup */
+    .wa-mockup {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      background: rgba(12, 19, 10, 0.95);
+    }
+    .wa-header {
+      background: rgba(20, 30, 16, 0.95);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-green);
+    }
+    .wa-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      color: var(--text-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .wa-info h4 { font-size: 16px; font-family: 'Inter', sans-serif; color: white; }
+    .wa-info span { font-size: 12px; color: var(--green-light); }
+    .wa-body {
+      background: rgba(12, 19, 10, 0.9);
+      padding: 24px 16px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background-image: radial-gradient(var(--border-green) 1px, transparent 0);
+      background-size: 16px 16px;
+    }
+    .msg {
+      max-width: 85%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .msg-out {
+      background: var(--gold);
+      color: var(--text-dark);
+      align-self: flex-end;
+      border-top-right-radius: 0;
+      box-shadow: 0 4px 12px rgba(228, 168, 52, 0.15);
+    }
+    .msg-in {
+      background: rgba(20, 30, 16, 0.85);
+      color: var(--text-main);
+      align-self: flex-start;
+      border-top-left-radius: 0;
+      border: 1px solid var(--border-green);
+      backdrop-filter: blur(8px);
+    }
+    .msg-time {
+      font-size: 10px;
+      color: var(--text-muted);
+      float: right;
+      margin-top: 6px;
+      margin-left: 8px;
+    }
+
+    /* 2. Timeline visual styling */
+    .timeline-visual {
+      position: relative;
+      padding-left: 48px;
+      width: 100%;
+    }
+    .timeline-visual::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green-light) 0%, var(--gold) 50%, var(--green) 100%);
+    }
+    .timeline-visual-item {
+      position: relative;
+      padding-bottom: 24px;
+    }
+    .timeline-visual-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-visual-badge {
+      position: absolute;
+      left: -48px;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(20, 30, 16, 0.9);
+      border: 1.5px solid var(--border-gold);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 2;
+      box-shadow: 0 0 12px rgba(228, 168, 52, 0.2);
+    }
+    .timeline-visual-item.active-green .timeline-visual-badge {
+      border-color: var(--green-light);
+      color: var(--green-light);
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.35);
+    }
+    .timeline-visual-item.active-gold .timeline-visual-badge {
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 15px rgba(228, 168, 52, 0.35);
+    }
+    .timeline-visual-content {
+      background: rgba(20, 30, 16, 0.6);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 16px 20px;
+      transition: all 0.3s ease;
+    }
+    .timeline-visual-content:hover {
+      border-color: var(--green-light);
+      transform: translateX(4px);
+    }
+    .timeline-visual-content h5 {
+      color: white;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+    .timeline-visual-content p {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* 3. Stages Grid visual styling */
+    .stages-grid-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+    .stage-visual-card {
+      background: rgba(20, 30, 16, 0.6);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stage-visual-card.active, .stage-visual-card:hover {
+      border-color: var(--green-light);
+      background: rgba(20, 30, 16, 0.85);
+      box-shadow: 0 8px 24px rgba(62, 190, 103, 0.15);
+      transform: translateY(-4px);
+    }
+    .stage-icon-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(12, 19, 10, 0.8);
+      border: 1.5px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 12px;
+    }
+    .stage-visual-card.active .stage-icon-circle {
+      border-color: var(--green-light);
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+    }
+    .stage-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .stage-visual-card.active .stage-label {
+      color: var(--gold);
+    }
+    .stage-info {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    /* 4. Multimodal inputs visual styling */
+    .input-panel-visual {
+      width: 100%;
+    }
+    .input-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(20, 30, 16, 0.6);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+    .input-card:last-child {
+      margin-bottom: 0;
+    }
+    .input-card:hover {
+      border-color: var(--green-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    .input-card-icon {
+      font-size: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(12, 19, 10, 0.8);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-card-text {
+      flex: 1;
+    }
+    .input-card-text h5 {
+      color: white;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    
+    /* Animated Voice Sound Wave */
+    .sound-wave {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 20px;
+    }
+    .wave-bar {
+      width: 4px;
+      height: 6px;
+      background-color: var(--green-light);
+      border-radius: 2px;
+      animation: sound-pulse 1.2s infinite ease-in-out;
+    }
+    .wave-bar:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+    .wave-bar:nth-child(3) { height: 18px; animation-delay: 0.3s; }
+    .wave-bar:nth-child(4) { height: 10px; animation-delay: 0.45s; }
+    .wave-bar:nth-child(5) { height: 6px; animation-delay: 0.6s; }
+
+    @keyframes sound-pulse {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(2.2); }
+    }
+
+    /* Laser Scanner Mockup */
+    .scan-container {
+      position: relative;
+      width: 80px;
+      height: 42px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+    }
+    .scan-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+      animation: laser-scan 2s infinite ease-in-out;
+    }
+    @keyframes laser-scan {
+      0%, 100% { top: 0%; }
+      50% { top: 100%; }
+    }
+
+    /* Text input typing simulation */
+    .typing-sim {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: var(--green-light);
+      background: rgba(12, 19, 10, 0.7);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-glass);
+      display: inline-block;
+      min-width: 170px;
+    }
+    .typing-cursor {
+      animation: blink 0.8s infinite;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* 5. Cost Savings Chart styling */
+    .savings-chart-card {
+      background: rgba(20, 30, 16, 0.6);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      width: 100%;
+    }
+    .savings-total {
+      text-align: center;
+      font-size: 44px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .savings-total .currency {
+      color: var(--gold);
+    }
+    .savings-total .label-saved {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.2;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .chart-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bar-label {
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .bar-track {
+      background: rgba(12, 19, 10, 0.8);
+      border: 1px solid var(--border-glass);
+      height: 28px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      color: var(--text-dark);
+      font-size: 11.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      border-radius: 4px;
+      box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
+    }
+    .bar-fill.fill-1 { width: 85%; background: var(--green); }
+    .bar-fill.fill-2 { width: 70%; background: var(--gold); }
+    .bar-fill.fill-3 { width: 55%; background: var(--green-light); }
+
+    .net-annual-savings {
+      border-top: 1px solid var(--border-glass);
+      padding-top: 16px;
+      font-size: 15px;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 8rem 0;
+      text-align: center;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(20, 30, 16, 0.9), rgba(12, 19, 10, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 5rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .cta-box h2 {
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+    }
+    .cta-box p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060B05;
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-glass);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+    .footer-col h4 {
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE DESIGN ── */
+    @media (max-width: 992px) {
+      .hero {
+        height: 60vh;
+      }
+      .editorial-grid, .editorial-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+      .editorial-grid.reverse {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .text-content p {
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .wa-mockup, .timeline-visual, .stages-grid-visual, .input-panel-visual, .savings-chart-card {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: var(--bg-surface);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        padding: 24px;
+        border-bottom: 1px solid var(--border-gold);
+        gap: 20px;
+        z-index: 99;
+      }
+      .nav-links.mobile-active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="lang-te">
+
+  <!-- Fixed Backdrop System -->
+  <div class="page-backdrop"></div>
+  <div class="backdrop-overlay"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="navbar glass-panel">
+    <div class="container nav-container">
+      <a href="index.html" class="logo display">
+        <span class="text-green">🌾</span> 
+        <span lang="te" class="telugu">రైతుబాడి</span>
+        <span lang="en">RaituBadi</span>
+        <span lang="hi">रैतुबाड़ी</span>
+      </a>
+      
+      <div class="nav-links ui">
+        <a href="index.html" class="nav-link">
+          <span lang="te" class="telugu">హోమ్</span>
+          <span lang="en">Home</span>
+          <span lang="hi">होम</span>
+        </a>
+        <a href="analyzer.html" class="nav-link">
+          <span lang="te" class="telugu">పంటల ఎనలైజర్</span>
+          <span lang="en">AI Analyzer</span>
+          <span lang="hi">एआई विश्लेषक</span>
+        </a>
+        <a href="encyclopedia.html" class="nav-link">
+          <span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span>
+          <span lang="en">Encyclopedia</span>
+          <span lang="hi">फसल ज्ञानकोश</span>
+        </a>
+        <a href="features.html" class="nav-link active">
+          <span lang="te" class="telugu">ఫీచర్లు</span>
+          <span lang="en">Features</span>
+          <span lang="hi">सुविधाएं</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span lang="te" class="telugu">రైతుల గుండె చప్పుడు</span>
+          <span lang="en">Our Story</span>
+          <span lang="hi">हमारी कहानी</span>
+        </a>
+      </div>
+
+      <div class="nav-actions" style="display: flex; gap: 16px; align-items: center;">
+        <div class="lang-switcher mono">
+          <button class="lang-btn" data-lang="te">TE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">HI</button>
+        </div>
+        <button class="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ── -->
+  <section class="hero reveal">
+    <div class="hero-content">
+      <h1 class="display">
+        <span lang="te" class="telugu">మట్టి నుండి పుట్టిన సాంకేతికత.<br><span class="text-gold">అసాధారణ ఫీచర్లు & సామర్థ్యాలు</span></span>
+        <span lang="en">Technology born from soil.<br><span class="text-gold">Advanced Features & Capabilities</span></span>
+        <span lang="hi">मिट्टी से जन्मी तकनीक।<br><span class="text-gold">असाधारण सुविधाएँ और क्षमताएँ</span></span>
+      </h1>
+      <p class="ui">
+        <span lang="te" class="telugu">భారతదేశ వ్యాప్తంగా కోట్ల మంది రైతులకు అత్యుత్తమ డిజిటల్ సాగు సహాయాన్ని అందించడానికి రైతుబాడి రూపొందించిన ఐదు విప్లవాత్మక ఫీచర్లను ఇక్కడ చూడండి.</span>
+        <span lang="en">Explore the five revolutionary agricultural features engineered by RaituBadi to empower millions of farmers across India with modern AI technology.</span>
+        <span lang="hi">भारत भर में करोड़ों किसानों को सशक्त बनाने के लिए रैतुबाड़ी द्वारा निर्मित पाँच क्रांतिकारी कृषि सुविधाओं का अन्वेषण करें।</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FEATURE 1: NATIVE LANGUAGE SUPPORT ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reveal">
+        <div class="text-content">
+          <h2 class="section-title text-green display">
+            <span lang="te" class="telugu">స్వదేశీ భాషా మద్దతు & వాట్సాప్ చాట్</span>
+            <span lang="en">Native Language Support & WhatsApp Integration</span>
+            <span lang="hi">मातृभाषा सहायता और व्हाट्सएप बोट</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">రైతులతో వారి సొంత భాషలోనే మాట్లాడటం మా ప్రాధాన్యత. నెల్లూరు మిర్చి రైతు అయినా, గుంటూరు వరి రైతు అయినా, వ్యవసాయ సాంకేతికతను వారి మాతృభాషలో సులభంగా అర్థం చేసుకునేలా రైతుబాడిని రూపొందించాము. మా వాట్సాప్ చాట్‌బాట్ ద్వారా తెలుగు, హిందీ లేదా ఇంగ్లీషులో సులభంగా సంప్రదించవచ్చు.</span>
+            <span lang="en">Speaking to farmers in their mother tongue is our absolute priority. Whether you are a chilli farmer in Guntur or a paddy cultivator in Nellore, RaituBadi makes advanced crop science highly understandable in your own dialect. Our intuitive WhatsApp bot lets you chat naturally in Telugu, Hindi, or English.</span>
+            <span lang="hi">किसानों से उनकी अपनी भाषा में बात करना हमारी प्राथमिकता है। चाहे आप गुंटूर के मिर्च किसान हों या नेल्लोर के धान उत्पादक, रैतुबाड़ी कृषि विज्ञान को आपकी मातृभाषा में सुलभ बनाता है। हमारे आसान व्हाट्सएप बोट द्वारा आप तेलुगु, हिंदी या अंग्रेजी में संवाद कर सकते हैं।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">ఎటువంటి క్లిష్టమైన యాప్స్ ఇన్‌స్టాల్ చేసుకోకుండానే, కేవలం రోజువారీ వాట్సాప్ మెసేజ్ పంపడం ద్వారా మీ పంటల నివారణోపాయాలు తెలుసుకోవచ్చు.</span>
+            <span lang="en">Without downloading heavy applications, you can receive precise diagnoses and dosage solutions directly within WhatsApp with the ease of normal chatting.</span>
+            <span lang="hi">किसी भी भारी ऐप को डाउनलोड किए बिना, आप सामान्य चैटिंग की तरह सीधे व्हाट्सएप पर सटीक निदान और समाधान प्राप्त कर सकते हैं।</span>
+          </p>
+        </div>
+        
+        <div class="visual-content">
+          <div class="wa-mockup">
+            <div class="wa-header">
+              <div class="wa-avatar">🌾</div>
+              <div class="wa-info">
+                <h4>RaituBadi AI</h4>
+                <span>Online</span>
+              </div>
+            </div>
+            <div class="wa-body">
+              <div class="msg msg-out">
+                <span lang="te" class="telugu">నా వరి పంటలో ఆకులు ఎర్రబడుతున్నాయి, ఏమి చేయాలి?</span>
+                <span lang="en">My paddy crop leaves are turning red, what should I do?</span>
+                <span lang="hi">धान की पत्तियां लाल हो रही हैं, क्या समाधान है?</span>
+                <span class="msg-time">11:05 AM</span>
+              </div>
+              <div class="msg msg-in">
+                <span lang="te" class="telugu">
+                  <strong>వరి ఎర్ర తెగులు (Tungro Virus)</strong><br>🔴 తీవ్రత: ఎక్కువ<br><br>
+                  <strong>సేంద్రీయ నివారణ:</strong> వేప నూనె (10,000 PPM) 5 మి.లీ లీటర్ నీటికి కలిపి పిచికారీ చేయండి.<br><br>
+                  <strong>రసాయన నివారణ:</strong> మోనోక్రోటోఫాస్ 1.6 మి.లీ లీటర్ నీటిలో కలిపి పిచికారీ చేయండి.<br><br>
+                  అంచనా ఆదా: ₹1,500/ఎకరాకు
+                </span>
+                <span lang="en">
+                  <strong>Paddy Tungro Virus Disease</strong><br>🔴 Severity: High<br><br>
+                  <strong>Organic Treatment:</strong> Spray neem oil (10,000 PPM) @ 5ml/litre of water on affected crops.<br><br>
+                  <strong>Chemical Treatment:</strong> Spray Monocrotophos @ 1.6ml/litre of water.<br><br>
+                  Estimated Saving: ₹1,500/acre
+                </span>
+                <span lang="hi">
+                  <strong>धान का टुंग्रो वायरस रोग</strong><br>🔴 तीव्रता: उच्च<br><br>
+                  <strong>जैविक उपचार:</strong> नीम का तेल (10,000 PPM) 5 मिली/लीटर पानी में मिलाकर प्रभावित पत्तियों पर छिड़कें।<br><br>
+                  <strong>रासायनिक उपचार:</strong> मोनोक्रोटोफॉस 1.6 मिली प्रति लीटर पानी में मिलाकर छिड़काव करें।<br><br>
+                  अनुमानित बचत: ₹1,500/एकड़
+                </span>
+                <span class="msg-time">11:06 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE 2: CONTINUOUS AI MEMORY ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reverse reveal">
+        <div class="visual-content">
+          <div class="timeline-visual">
+            <div class="timeline-visual-item active-green">
+              <div class="timeline-visual-badge">🌱</div>
+              <div class="timeline-visual-content">
+                <h5 class="ui">
+                  <span lang="te" class="telugu">నేల తేమ & pH పరీక్ష</span>
+                  <span lang="en">Soil Health Check</span>
+                  <span lang="hi">मिट्टी स्वास्थ्य परीक्षण</span>
+                </h5>
+                <p>
+                  <span lang="te" class="telugu">తేదీ: మే 10 | pH: 6.8 Optimal - నత్రజని పెంచండి.</span>
+                  <span lang="en">May 10 | pH: 6.8 Optimal - Nitrogen level boosted.</span>
+                  <span lang="hi">10 मई | पीएच: 6.8 अनुकूल - नाइट्रोजन को बढ़ावा।</span>
+                </p>
+              </div>
+            </div>
+            <div class="timeline-visual-item active-gold">
+              <div class="timeline-visual-badge">🍂</div>
+              <div class="timeline-visual-content">
+                <h5 class="ui">
+                  <span lang="te" class="telugu">లక్షణం గుర్తించబడింది</span>
+                  <span lang="en">Symptom Detected</span>
+                  <span lang="hi">लक्षण पाया गया</span>
+                </h5>
+                <p>
+                  <span lang="te" class="telugu">తేదీ: జూన్ 15 | ఆకుమచ్చ తెగులు ప్రారంభ గుర్తింపు.</span>
+                  <span lang="en">June 15 | Leaf Spot early diagnosis & treated.</span>
+                  <span lang="hi">15 जून | पत्ती धब्बा रोग की पहचान और उपचार।</span>
+                </p>
+              </div>
+            </div>
+            <div class="timeline-visual-item active-green">
+              <div class="timeline-visual-badge">🌾</div>
+              <div class="timeline-visual-content">
+                <h5 class="ui">
+                  <span lang="te" class="telugu">సంపూర్ణ ఆరోగ్యం</span>
+                  <span lang="en">Peak Recovery</span>
+                  <span lang="hi">पूर्ण स्वास्थ्य सुधार</span>
+                </h5>
+                <p>
+                  <span lang="te" class="telugu">తేదీ: జూలై 20 | పంట కోలుకుంది, ఆకులు పచ్చగా మారాయి.</span>
+                  <span lang="en">July 20 | Crop recovered, lush green leaves restored.</span>
+                  <span lang="hi">20 जुलाई | फसल पूरी तरह स्वस्थ, हरी पत्तियां बहाल।</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-content">
+          <h2 class="section-title text-gold display">
+            <span lang="te" class="telugu">నిరంతర AI మెమరీ & పంట చరిత్ర</span>
+            <span lang="en">Continuous AI Memory & Field History Log</span>
+            <span lang="hi">निरंतर एआई मेमोरी और फसल इतिहास</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">రైతుబాడి కేవలం ఒక ఒంటరి స్కాన్‌తో ముగిసిపోదు. ఇది మీ పొలం యొక్క సమగ్ర చరిత్రను గుర్తుంచుకుంటుంది. గతంలో వచ్చిన తెగుళ్లు, ఉపయోగించిన మందులు మరియు నేల తేమ వివరాలను నిరంతరం విశ్లేషించి, భవిష్యత్తు ప్రణాళికను సిద్ధం చేస్తుంది. మట్టి నుండి పుట్టిన ఈ సాంకేతికత మీ పొలానికి ఒక డిజిటల్ డైరీగా మారుతుంది.</span>
+            <span lang="en">RaituBadi is not a one-time scan utility; it retains the contextual memory of your land's health over time. By tracking previous diagnoses, treatments applied, and recurring symptoms, our AI builds a continuous chronicle of your soil. This digital diary makes future planning highly personalized.</span>
+            <span lang="hi">रैतुबाड़ी केवल एक बार स्कैन करने वाला टूल नहीं है; यह समय के साथ आपकी भूमि के स्वास्थ्य का इतिहास याद रखता है। पिछले रोगों, उपयोग किए गए उपचारों और मिट्टी की स्थिति को ट्रैक करके, यह आपकी कृषि भूमि का एक निरंतर क्रॉनिकल बनाता है। यह डिजिटल डायरी भविष्य के नियोजन को अत्यधिक व्यक्तिगत बनाती है।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">పాత డేటాను విశ్లేషించడం ద్వారా, AI మీ నేలలో ఏవైనా లోపాలు ఉన్నాయేమో ముందే హెచ్చరించి, మరింత ఎక్కువ దిగుబడి పొందే మార్గాలను సూచిస్తుంది.</span>
+            <span lang="en">By cross-referencing historical records, the AI preemptively alerts you to recurring seasonal infestations, enabling preventive rather than reactive care.</span>
+            <span lang="hi">ऐतिहासिक रिकॉर्ड का विश्लेषण करके, एआई आपको मौसमी कीटों के दोबारा होने की चेतावनी देता है, जिससे समय पर फसल की सुरक्षा संभव हो पाती है।</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE 3: CROP STAGE INTELLIGENCE ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reveal">
+        <div class="text-content">
+          <h2 class="section-title text-green display">
+            <span lang="te" class="telugu">పంట దశల మేధస్సు</span>
+            <span lang="en">Crop Stage Intelligence</span>
+            <span lang="hi">फसल चरण बुद्धिमत्ता</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">పంటల వయస్సును బట్టి వాటికి వచ్చే రోగాలు మరియు వాటి నిరోధకత మారుతుంటాయి. అందుకే మా AI కేవలం ఫోటోను మాత్రమే కాకుండా, పంట ఏ దశలో ఉందో కూడా పరిగణనలోకి తీసుకుంటుంది. నాట్లు వేసే దశ నుండి కోత కోసే వరకు, ఆయా సమయాల్లో వచ్చే తెగుళ్లకు అనుగుణంగా మోతాదులను మరియు సేంద్రీయ/రసాయన చికిత్సలను ఖచ్చితంగా సర్దుబాటు చేస్తుంది.</span>
+            <span lang="en">Plant vulnerability and biological defense systems change drastically across growth stages. Our AI doesn't just evaluate the leaf—it understands the plant's lifecycle stage. From early sowing to mature harvesting, it dynamically calibrates organic and chemical dosages to align with the crop's precise growth phase.</span>
+            <span lang="hi">फसल के विकास के चरणों में पौधों की संवेदनशीलता और जैविक रक्षा प्रणालियाँ नाटकीय रूप से बदलती हैं। हमारी एआई न केवल पत्तियों का मूल्यांकन करती है—बल्कि फसल के जीवनचक्र के चरण को भी पहचानती है। बुवाई से लेकर परिपक्व कटाई तक, यह जैविक और रासायनिक उपचारों को सटीक रूप से समायोजित करती है।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">మొలక దశలో అవసరమైన సున్నితమైన రక్షణ నుండి కోతకు ముందు వాడే శక్తివంతమైన నివారణల వరకు ప్రతి దశకు తగిన చికిత్స లభిస్తుంది.</span>
+            <span lang="en">Whether managing fragile seedling rots or mature grain blemishes, RaituBadi ensures optimized, targeted protection for every stage of your harvest.</span>
+            <span lang="hi">चाहे अंकुरण अवस्था की नाजुक देखभाल हो या पके दानों को बचाने का प्रयास, रैतुबाड़ी आपकी फसल के हर चरण के लिए सर्वोत्तम सुरक्षा सुनिश्चित करती है।</span>
+          </p>
+        </div>
+        
+        <div class="visual-content">
+          <div class="stages-grid-visual">
+            <div class="stage-visual-card active">
+              <div class="stage-icon-circle">🌱</div>
+              <div class="stage-label">
+                <span lang="te" class="telugu">నాట్లు / మొలక</span>
+                <span lang="en">Sowing</span>
+                <span lang="hi">बुवाई</span>
+              </div>
+              <div class="stage-info">
+                <span lang="te" class="telugu">వేరు కుళ్ళు తెగులు నివారణ</span>
+                <span lang="en">Root Rot prevention checks</span>
+                <span lang="hi">जड़ सड़न रोकथाम जांच</span>
+              </div>
+            </div>
+            <div class="stage-visual-card">
+              <div class="stage-icon-circle">🌿</div>
+              <div class="stage-label">
+                <span lang="te" class="telugu">పెరుగుదల దశ</span>
+                <span lang="en">Vegetative</span>
+                <span lang="hi">वानस्पतिक</span>
+              </div>
+              <div class="stage-info">
+                <span lang="te" class="telugu">కాండం తొలిచే పురుగు నివారణ</span>
+                <span lang="en">Stem Borer control advice</span>
+                <span lang="hi">तना छेदक नियंत्रण सलाह</span>
+              </div>
+            </div>
+            <div class="stage-visual-card">
+              <div class="stage-icon-circle">🌸</div>
+              <div class="stage-label">
+                <span lang="te" class="telugu">పూత దశ</span>
+                <span lang="en">Flowering</span>
+                <span lang="hi">फूल आना</span>
+              </div>
+              <div class="stage-info">
+                <span lang="te" class="telugu">అగ్గి తెగులు ముందస్తు నివారణ</span>
+                <span lang="en">Blast prevention alerts</span>
+                <span lang="hi">ब्लास्ट रोग रोकथाम चेतावनी</span>
+              </div>
+            </div>
+            <div class="stage-visual-card">
+              <div class="stage-icon-circle">🚜</div>
+              <div class="stage-label">
+                <span lang="te" class="telugu">కోత దశ</span>
+                <span lang="en">Harvest</span>
+                <span lang="hi">कटाई</span>
+              </div>
+              <div class="stage-info">
+                <span lang="te" class="telugu">గింజ నాణ్యత మరియు పరిపక్వత</span>
+                <span lang="en">Yield & grain health analysis</span>
+                <span lang="hi">उपज और दानों का विश्लेषण</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE 4: VOICE, PHOTO & TEXT INPUTS ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reverse reveal">
+        <div class="visual-content">
+          <div class="input-panel-visual">
+            <div class="input-card">
+              <div class="input-card-icon"><i class="fa-solid fa-microphone text-green"></i></div>
+              <div class="input-card-text">
+                <h5>
+                  <span lang="te" class="telugu">వాయిస్ సందేశం (వాయిస్ నోట్)</span>
+                  <span lang="en">Voice Query Note</span>
+                  <span lang="hi">आवाज संदेश इनपुट</span>
+                </h5>
+                <div class="sound-wave">
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="input-card">
+              <div class="input-card-icon"><i class="fa-solid fa-camera text-gold"></i></div>
+              <div class="input-card-text">
+                <h5>
+                  <span lang="te" class="telugu">పంట ఆకు ఫోటో విశ్లేషణ</span>
+                  <span lang="en">Photo Leaf Analysis</span>
+                  <span lang="hi">पत्ती का फोटो स्कैन</span>
+                </h5>
+                <div class="scan-container">
+                  <img src="https://images.unsplash.com/photo-1601002361661-827fc77ebcde?w=200&q=80&auto=format&fit=crop" class="scan-img" alt="Leaf Scan">
+                  <div class="scan-line"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="input-card">
+              <div class="input-card-icon"><i class="fa-solid fa-keyboard text-green"></i></div>
+              <div class="input-card-text">
+                <h5>
+                  <span lang="te" class="telugu">సమస్య టెక్స్ట్ వివరణ</span>
+                  <span lang="en">Text Description Input</span>
+                  <span lang="hi">टेक्स्ट लक्षण विवरण</span>
+                </h5>
+                <div class="typing-sim">
+                  <span lang="te" class="telugu">మిరప ఆకు ముడత నివారణ...</span>
+                  <span lang="en">Chilli leaf curl remedy...</span>
+                  <span lang="hi">मिर्च के पत्तों का उपचार...</span>
+                  <span class="typing-cursor">|</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-content">
+          <h2 class="section-title text-gold display">
+            <span lang="te" class="telugu">బహుళ ఇన్‌పుట్ మార్గాలు (మల్టీమోడల్)</span>
+            <span lang="en">Voice, Photo & Text Inputs (Multimodal)</span>
+            <span lang="hi">बहु-इनपुट माध्यम (मल्टीमॉडल)</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">ప్రతి రైతుకూ చదవడం లేదా రాయడం రాకపోవచ్చు. అందుకే రైతుబాడిలో వివిధ రకాల సులభమైన ఇన్‌పుట్ మార్గాలను కల్పించాము. ఆకు యొక్క ఫోటో తీసి అప్‌లోడ్ చేయవచ్చు, లేదా నోటితో సమస్యను చెప్పి వాయిస్ సందేశాన్ని రికార్డ్ చేయవచ్చు, లేదా టైప్ చేసి ప్రశ్నించవచ్చు. సాంకేతికతను రైతుల ముంగిటకే చేరడమే మా ఆశయం.</span>
+            <span lang="en">Not every farmer wants to type long disease descriptions in field conditions. RaituBadi features robust multimodal processing: take a high-resolution photo of the problem, record a spoken query in your native dialect, or write a textual description. We adapt to the farmer's convenience.</span>
+            <span lang="hi">हर किसान खेत में रहकर लंबी बीमारी का विवरण टाइप नहीं करना चाहता। रैतुबाड़ी मजबूत मल्टीमॉडल प्रोसेसिंग प्रदान करता है: समस्या की एक फोटो लें, अपनी क्षेत्रीय बोली में एक वॉयस नोट रिकॉर्ड करें, या विवरण लिखें। हम किसान की सुविधा के अनुसार काम करते हैं।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">మా వాయిస్ రికార్డర్ స్థానిక వ్యవసాయ యాసలను కూడా ఖచ్చితంగా గుర్తించగలదు, తద్వారా నిరక్షరాస్యులైన రైతులకు సైతం సాంకేతికత సులభంగా అందుబాటులోకి వస్తుంది.</span>
+            <span lang="en">Our voice processing engine accommodates local agricultural dialects and vocabulary, providing equal access to digital expertise for every farmer.</span>
+            <span lang="hi">हमारा वॉयस प्रोसेसिंग इंजन स्थानीय कृषि बोलियों और शब्दावली को समझता है, जिससे हर किसान को डिजिटल कृषि विशेषज्ञता का लाभ समान रूप से मिलता है।</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE 5: COST SAVINGS ── -->
+  <section class="section">
+    <div class="container">
+      <div class="editorial-grid reveal">
+        <div class="text-content">
+          <h2 class="section-title text-green display">
+            <span lang="te" class="telugu">ఆర్థిక ఆదా & వ్యయ నియంత్రణ</span>
+            <span lang="en">Cost Savings: ₹340 Avg Saved Per Scan</span>
+            <span lang="hi">लागत बचत: ₹340 प्रति स्कैन औसत</span>
+          </h2>
+          <p>
+            <span lang="te" class="telugu">రైతుబాడి ఉపయోగించడం వల్ల ప్రతి స్కాన్‌కు సగటున ₹340 ఆదా అవుతుంది. అనవసరమైన రసాయనాల కొనుగోలును నివారించడం, తెగుళ్లను ముందే గుర్తించి పంట నష్టాన్ని తగ్గించడం మరియు నిపుణుల సలహాల కోసం అయ్యే ఖర్చులను ఆదా చేయడం ద్వారా నెల్లూరు మరియు గుంటూరు పరిసర ప్రాంతాల రైతులు పంట వ్యయాలను గణనీయంగా తగ్గించుకుంటున్నారు.</span>
+            <span lang="en">Every precision diagnostic scan saves farmers an average of ₹340 in input expenses. By eliminating wasteful chemical sprays, identifying nutrient gaps before yield declines, and removing expensive consultant visit fees, farmers in Nellore and Guntur are actively minimizing their input costs.</span>
+            <span lang="hi">रैतुबाड़ी का उपयोग करने से प्रति स्कैन औसतन ₹340 की बचत होती है। अनावश्यक रसायनों के छिड़काव से बचकर, बीमारी की समय पर पहचान कर और विशेषज्ञों के परामर्श शुल्क को बचाकर, हमारे किसान अपनी खेती की लागत को काफी कम कर रहे हैं।</span>
+          </p>
+          <p>
+            <span lang="te" class="telugu">సేంద్రీయ పద్ధతులను ప్రోత్సహించడం ద్వారా మేము కేవలం మందుల ఖర్చులు మాత్రమే కాకుండా, దీర్ఘకాలిక నేల సంరక్షణకు కూడా సహకరిస్తున్నాము.</span>
+            <span lang="en">By advocating bio-rational organic alternatives first, we ensure immediate pesticide savings as well as long-term soil vitality and ecosystem sustainability.</span>
+            <span lang="hi">जैविक विकल्पों को प्राथमिकता देकर, हम कीटनाशकों पर होने वाले तत्काल खर्च को बचाते हैं और लंबे समय तक मिट्टी की उपजाऊ क्षमता को भी बनाए रखते हैं।</span>
+          </p>
+        </div>
+        
+        <div class="visual-content">
+          <div class="savings-chart-card">
+            <div class="savings-total display">
+              <span class="currency">₹</span>340 
+              <span class="label-saved">
+                <span lang="te" class="telugu">ప్రతి స్కాన్‌కు ఆదా</span>
+                <span lang="en">Saved Per Scan</span>
+                <span lang="hi">प्रति स्कैन बचत</span>
+              </span>
+            </div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar-label">
+                  <span lang="te" class="telugu">ముందస్తు తెగులు గుర్తింపు (Early Disease Detection)</span>
+                  <span lang="en">Early Disease Detection</span>
+                  <span lang="hi">रोग की प्रारंभिक पहचान</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill fill-1">₹150 Saved</div>
+                </div>
+              </div>
+              <div class="bar-group">
+                <div class="bar-label">
+                  <span lang="te" class="telugu">నిర్దిష్ట క్రిమిసంహారకాల పిచికారీ (Pesticide Optimization)</span>
+                  <span lang="en">Pesticide Optimization</span>
+                  <span lang="hi">कीटनाशक छिड़काव अनुकूलन</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill fill-2">₹110 Saved</div>
+                </div>
+              </div>
+              <div class="bar-group">
+                <div class="bar-label">
+                  <span lang="te" class="telugu">ప్రయాణ & నిపుణుల సలహా వ్యయం (Consultation Savings)</span>
+                  <span lang="en">Travel & Consultation Savings</span>
+                  <span lang="hi">यात्रा एवं परामर्श बचत</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill fill-3">₹80 Saved</div>
+                </div>
+              </div>
+            </div>
+            <div class="net-annual-savings text-center font-semibold text-green display">
+              <span lang="te" class="telugu">సంవత్సరానికి సగటున ఎకరాకు ₹4,200 ఆదా!</span>
+              <span lang="en">Avg. ₹4,200 Saved Per Acre Annually!</span>
+              <span lang="hi">औसतन ₹4,200 प्रति एकड़ वार्षिक बचत!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2 class="display">
+          <span lang="te" class="telugu">మీ పంటను ఇప్పుడే విశ్లేషించండి</span>
+          <span lang="en">Analyze Your Crop Instantly</span>
+          <span lang="hi">अपनी फसल का अभी विश्लेषण करें</span>
+        </h2>
+        <p class="ui">
+          <span lang="te" class="telugu">మా విప్లవాత్మక ఫీచర్లను ఉపయోగించి మీ పంటల సమస్యలను కేవలం 10 సెకన్లలో సరిచేసుకోండి.</span>
+          <span lang="en">Leverage our precision AI tools to identify plant pathogens and manage crop nutrient balances in under 10 seconds.</span>
+          <span lang="hi">पौधों की बीमारियों की पहचान करने और उनके पोषण को नियंत्रित करने के लिए हमारे एआई टूल्स का उपयोग करें।</span>
+        </p>
+        <div class="cta-buttons">
+          <a href="analyzer.html" class="btn btn-primary" style="font-size: 18px; padding: 16px 32px;">
+            <span lang="te" class="telugu">AI ఎనలైజర్ ఉపయోగించండి</span>
+            <span lang="en">Use AI Analyzer</span>
+            <span lang="hi">एआई विश्लेषक का उपयोग करें</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo display" style="margin-bottom: 16px; display: inline-flex;">
+            <span class="text-green">🌾</span> 
+            <span lang="te" class="telugu">రైతుబాడి</span>
+            <span lang="en">RaituBadi</span>
+            <span lang="hi">रैतुबाड़ी</span>
+          </a>
+          <p class="ui" style="color: var(--text-muted); font-size: 14px; max-width: 320px; line-height: 1.6;">
+            <span lang="te" class="telugu">నెల్లూరు మరియు గుంటూరుకు చెందిన ఒక రైతు కొడుకు ద్వారా భారతీయ రైతుల కోసం రూపొందించబడింది. ప్రతి రైతుకు సాంకేతికతను మరియు విలువైన సమాచారాన్ని అందించడమే మా లక్ష్యం.</span>
+            <span lang="en">Built by a farmer's son from Nellore & Guntur, for Indian farmers. Our mission is to bring technology and valuable knowledge to every farmer.</span>
+            <span lang="hi">नेल्लोर और गुंटूर के एक किसान के बेटे द्वारा भारतीय किसानों के लिए बनाया गया। हमारा लक्ष्य हर किसान तक तकनीक और बहुमूल्य जानकारी पहुंचाना है।</span>
+          </p>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">త్వరిత లింకులు</span>
+            <span lang="en">Quick Links</span>
+            <span lang="hi">त्वरित लिंक</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="index.html"><span lang="te" class="telugu">హోమ్</span><span lang="en">Home</span><span lang="hi">होम</span></a></li>
+            <li><a href="analyzer.html"><span lang="te" class="telugu">పంటల ఎనలైజర్</span><span lang="en">AI Analyzer</span><span lang="hi">एआई विश्लेषक</span></a></li>
+            <li><a href="encyclopedia.html"><span lang="te" class="telugu">పంట సంరక్షణ విజ్ఞానకోశం</span><span lang="en">Encyclopedia</span><span lang="hi">ज्ञानकोश</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">వేదిక</span>
+            <span lang="en">Platform</span>
+            <span lang="hi">प्लेटफ़ॉर्म</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="features.html"><span lang="te" class="telugu">ఫీచర్లు</span><span lang="en">Features</span><span lang="hi">विशेषताएं</span></a></li>
+            <li><a href="about.html"><span lang="te" class="telugu">మా కథ</span><span lang="en">Our Story</span><span lang="hi">हमारी कहानी</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4 class="ui">
+            <span lang="te" class="telugu">సంప్రదించండి</span>
+            <span lang="en">Connect</span>
+            <span lang="hi">संपर्क करें</span>
+          </h4>
+          <ul class="footer-links ui">
+            <li><a href="https://wa.me/919999999999" target="_blank"><span lang="te" class="telugu">వాట్సాప్ సహాయం</span><span lang="en">WhatsApp Support</span><span lang="hi">व्हाट्सएप सहायता</span></a></li>
+            <li><a href="mailto:support@raithubadi.org"><span lang="te" class="telugu">ఇమెయిల్ మద్దతు</span><span lang="en">Email Support</span><span lang="hi">ईमेल सहायता</span></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom mono">
+        <p>&copy; 2026 Raithubadi AI. All rights reserved.</p>
+        <p>Made with ❤️ in Nellore & Guntur, AP, India.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── LANGUAGE SWITCHER LOGIC ──
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    function setLanguage(lang) {
+      document.body.className = `lang-${lang}`;
+      localStorage.setItem('raithubadi_lang', lang);
+      
+      langBtns.forEach(btn => {
+        if(btn.dataset.lang === lang) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    // Initialize language from local storage or default to 'te'
+    const savedLang = localStorage.getItem('raithubadi_lang') || 'te';
+    setLanguage(savedLang);
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    // ── SCROLL REVEAL ANIMATION ──
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target); // Reveal only once
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // ── MOBILE MENU ──
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+    });
+
+    // Navbar Scroll Background Change
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
